@@ -1,0 +1,37 @@
+{
+  "name": "v-lazy-image",
+  "version": "0.0.1",
+  "description": "A Vue.js component to lazy load images using the Intersection Observer",
+  "main": "dist/v-lazy-image.cjs.js",
+  "author": {
+    "name": "Alex Jover Morales",
+    "email": "alexjovermorales@gmail.com"
+  },
+  "scripts": {
+    "build": "rollit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexjoverm/v-lazy-image.git"
+  },
+  "keywords": [
+    "vue",
+    "js",
+    "lazy",
+    "load",
+    "image",
+    "intersection",
+    "observer"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexjoverm/v-lazy-image/issues"
+  },
+  "homepage": "https://github.com/alexjoverm/v-lazy-image#readme",
+  "devDependencies": {
+    "rollit": "0.0.7"
+  },
+  "module": "dist/v-lazy-image.es.js",
+  "unpkg": "dist/v-lazy-image.js",
+  "browser": "dist/v-lazy-image.js"
+}
