@@ -1,6 +1,6 @@
 {
   "name": "v-lazy-image",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Vue.js component to lazy load images using the Intersection Observer",
   "main": "dist/v-lazy-image.cjs.js",
   "author": {
