@@ -1,8 +1,8 @@
 # v-lazy-image
 
-A Vue.js component to lazy load an image automatically when it enters the viewport using using the Intersection Observer API.
+A Vue.js component to lazy load an image automatically when it enters the viewport using the [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API).
 
-**Demos:**
+### Demos
 
 * [Simple demo](https://codesandbox.io/s/r5wmj970wm)
 * [Progressive image loading with animations](https://codesandbox.io/s/l4vxvmpqym)
