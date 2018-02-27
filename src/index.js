@@ -28,6 +28,7 @@ const VLazyImageComponent = {
     this.$el.addEventListener("load", ev => {
       if (this.$el.src === this.src) {
         this.loaded = true;
+        this.$emit("load");
       }
     });
 
@@ -36,6 +37,7 @@ const VLazyImageComponent = {
       if (image.isIntersecting) {
         this.intersected = true;
         this.observer.disconnect();
+        this.$emit("intersect");
       }
     });
 
@@ -48,7 +50,7 @@ const VLazyImageComponent = {
 
 export default VLazyImageComponent;
 
-export const VLazyImage = {
+export const VLazyImagePlugin = {
   install: (Vue, opts) => {
     Vue.component("VLazyImage", VLazyImageComponent);
   }
