@@ -7,14 +7,6 @@ const VLazyImageComponent = {
     srcPlaceholder: {
       type: String,
       default: ""
-    },
-    className: {
-      type: String,
-      default: "v-lazy-image"
-    },
-    classNameLoaded: {
-      type: String,
-      default: "v-lazy-image-loaded"
     }
   },
   data: () => ({ observer: null, intersected: false, loaded: false }),
@@ -27,8 +19,8 @@ const VLazyImageComponent = {
     return h("img", {
       attrs: { src: this.srcImage },
       class: {
-        [this.className]: true,
-        [this.classNameLoaded]: this.loaded
+        "v-lazy-image": true,
+        "v-lazy-image-loaded": this.loaded
       }
     });
   },
