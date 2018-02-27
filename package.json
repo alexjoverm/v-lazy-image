@@ -11,7 +11,8 @@
     "email": "alexjovermorales@gmail.com"
   },
   "scripts": {
-    "build": "rollit"
+    "build": "rollit",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
