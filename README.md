@@ -101,7 +101,7 @@ _Fields marked as (\*) are required._
 | Name              | Type          | Description                                                                                                                                         |
 | ----------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `src`             | String _(\*)_ | Image `src` to lazy load when it intersects with the viewport                                                                                       |
-| `src-placeholder` | String        | If defined, it will be shown until the `src` image is loaded. Useful for progressive image loading, [see demo](https://codesandbox.io/s/9l3n6j5944) |
+| `src-placeholder` | String        | If defined, it will be shown until the `src` image is loaded. <br> Useful for progressive image loading, [see demo](https://codesandbox.io/s/9l3n6j5944) |
 
 ### Events
 
