@@ -1,6 +1,6 @@
 # v-lazy-image
 
-![npm](https://img.shields.io/npm/v/v-lazy-image.svg)
+[![npm](https://img.shields.io/npm/v/v-lazy-image.svg)](https://www.npmjs.com/package/v-lazy-image)
 
 A Vue.js component to lazy load an image automatically when it enters the viewport using the [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API).
 
@@ -98,9 +98,9 @@ _Fields marked as (\*) are required._
 
 ### Props
 
-| Name              | Type          | Description                                                                                                                                         |
-| ----------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `src`             | String _(\*)_ | Image `src` to lazy load when it intersects with the viewport                                                                                       |
+| Name              | Type          | Description                                                                                                                                              |
+| ----------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `src`             | String _(\*)_ | Image `src` to lazy load when it intersects with the viewport                                                                                            |
 | `src-placeholder` | String        | If defined, it will be shown until the `src` image is loaded. <br> Useful for progressive image loading, [see demo](https://codesandbox.io/s/9l3n6j5944) |
 
 ### Events
