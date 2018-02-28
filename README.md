@@ -2,9 +2,9 @@
 
 [![npm](https://img.shields.io/npm/v/v-lazy-image.svg)](https://www.npmjs.com/package/v-lazy-image)
 
-A Vue.js component to lazy load an image automatically when it enters the viewport using the [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API).
+A Vue.js component to lazy load an image automatically when it enters the viewport using the [Intersection Observer API](https://developer.mozilla.org/docs/Web/API/Intersection_Observer_API).
 
-Check out the fundaments on how's built in [this Alligator.io article](https://alligator.io/vuejs/lazy-image/).
+Check out the fundaments on how it's built in [this Alligator.io article](https://alligator.io/vuejs/lazy-image/).
 
 ### Demos
 
@@ -19,7 +19,7 @@ npm install v-lazy-image
 
 _**Warning:** You'll need to install the [w3c Intersection Observer polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill) in case you're targeting a browser which doesn't support it._
 
-You can register globally the component so its available in all your app:
+You can register globally the component so it's available in all your apps:
 
 ```js
 import Vue from "vue";
