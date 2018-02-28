@@ -92,6 +92,8 @@ You could listen to the `intersect` and `load` events for more complex animation
 </template>
 ```
 
+[@jmperezperez](https://twitter.com/jmperezperez) has written about the [progressive loading technique](https://jmperezperez.com/more-progressive-image-loading/) on his blog, in case you want a deeper explanation.
+
 ## API
 
 Aside from the following API, you can pass any img attribute, such as `alt`, and they'll be added to the rendered `<img>` tag.
