@@ -18,7 +18,7 @@ const VLazyImageComponent = {
       return this.intersected ? this.src : this.srcPlaceholder;
     },
     srcsetImage() {
-      return this.intersected && "srcset" in this ? this.srcset : false;
+      return this.intersected && this.srcset ? this.srcset : false;
     }
   },
   render(h) {
