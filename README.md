@@ -50,7 +50,30 @@ You must pass a `src` property with the link of the image:
 
 That image will be loaded as soon as the image enters the viewport.
 
-## Progressive loading
+## Responsive Images
+
+Using the `srcset` prop in combinations with the `sizes` attribute you can set images for different sizes:
+
+```html
+<template>
+  <v-lazy-image
+    srcset="image.jpg 1x, image_2x.jpg 2x"
+    ></v-lazy-image>
+</template>
+```
+
+It's possible to use it with the `sizes` attributes as well:
+
+```html
+<template>
+  <v-lazy-image
+    srcset="image.jpg 400w, image.jpg 800w"
+    sizes="(max-width: 400w) 400w, 100vw"
+    ></v-lazy-image>
+</template>
+```
+
+## Progressive Loading
 
 You can use the `src-placeholder` property to define an image that is shown until the `src` image is loaded.
 
@@ -58,12 +81,10 @@ When the `src` image is loaded, a `v-lazy-image-loaded` class is added, so you c
 
 ```html
 <template>
-  <div>
-    <v-lazy-image
-      src="https://cdn-images-1.medium.com/max/1600/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
-      src-placeholder="https://cdn-images-1.medium.com/max/80/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
-      ></v-lazy-image>
-  </div>
+  <v-lazy-image
+    src="https://cdn-images-1.medium.com/max/1600/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
+    src-placeholder="https://cdn-images-1.medium.com/max/80/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
+    ></v-lazy-image>
 </template>
 
 <style scoped>
