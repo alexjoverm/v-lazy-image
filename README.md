@@ -19,7 +19,7 @@ npm install v-lazy-image
 
 _**Warning:** You'll need to install the [w3c Intersection Observer polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill) in case you're targeting a browser which doesn't support it._
 
-You can register globally the component so it's available in all your apps:
+You can register the component globally so it's available in all your apps:
 
 ```js
 import Vue from "vue";
