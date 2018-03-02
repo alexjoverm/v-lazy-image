@@ -10,6 +10,7 @@ Check out the fundaments on how it's built in [this Alligator.io article](https:
 
 * [Simple demo](https://codesandbox.io/s/r5wmj970wm)
 * [Progressive image loading with animations](https://codesandbox.io/s/9l3n6j5944), by [@aarongarciah](https://twitter.com/aarongarciah)
+* [Performant progressive blur using a SVG](https://codesandbox.io/s/2ox0z4ymop)
 
 ## Usage
 
