@@ -45,7 +45,7 @@ You must pass a `src` property with the link of the image:
 
 ```html
 <template>
-  <v-lazy-image src="http://lorempixel.com/400/200/"></v-lazy-image>
+  <v-lazy-image src="http://lorempixel.com/400/200/" />
 </template>
 ```
 
@@ -59,12 +59,10 @@ When the `src` image is loaded, a `v-lazy-image-loaded` class is added, so you c
 
 ```html
 <template>
-  <div>
-    <v-lazy-image
-      src="https://cdn-images-1.medium.com/max/1600/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
-      src-placeholder="https://cdn-images-1.medium.com/max/80/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
-      ></v-lazy-image>
-  </div>
+  <v-lazy-image
+    src="https://cdn-images-1.medium.com/max/1600/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
+    src-placeholder="https://cdn-images-1.medium.com/max/80/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
+    />
 </template>
 
 <style scoped>
@@ -82,14 +80,12 @@ You could listen to the `intersect` and `load` events for more complex animation
 
 ```html
 <template>
-  <div>
-    <v-lazy-image
-      src="https://cdn-images-1.medium.com/max/1600/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
-      src-placeholder="https://cdn-images-1.medium.com/max/80/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
-      @intersect="..."
-      @load="..."
-      ></v-lazy-image>
-  </div>
+  <v-lazy-image
+    src="https://cdn-images-1.medium.com/max/1600/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
+    src-placeholder="https://cdn-images-1.medium.com/max/80/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
+    @intersect="..."
+    @load="..."
+    />
 </template>
 ```
 
