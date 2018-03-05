@@ -7,17 +7,23 @@ const VLazyImageComponent = {
     srcPlaceholder: {
       type: String,
       default: ""
+    },
+    srcset: {
+      type: String
     }
   },
   data: () => ({ observer: null, intersected: false, loaded: false }),
   computed: {
     srcImage() {
       return this.intersected ? this.src : this.srcPlaceholder;
+    },
+    srcsetImage() {
+      return this.intersected && this.srcset ? this.srcset : false;
     }
   },
   render(h) {
     return h("img", {
-      attrs: { src: this.srcImage },
+      attrs: { src: this.srcImage, srcset: this.srcsetImage },
       class: {
         "v-lazy-image": true,
         "v-lazy-image-loaded": this.loaded

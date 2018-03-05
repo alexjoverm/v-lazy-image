@@ -10,6 +10,7 @@ Check out the fundaments on how it's built in [this Alligator.io article](https:
 
 * [Simple demo](https://codesandbox.io/s/r5wmj970wm)
 * [Progressive image loading with animations](https://codesandbox.io/s/9l3n6j5944), by [@aarongarciah](https://twitter.com/aarongarciah)
+* [Performant progressive blur using a SVG](https://codesandbox.io/s/2ox0z4ymop)
 
 ## Usage
 
@@ -19,7 +20,7 @@ npm install v-lazy-image
 
 _**Warning:** You'll need to install the [w3c Intersection Observer polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill) in case you're targeting a browser which doesn't support it._
 
-You can register globally the component so it's available in all your apps:
+You can register the component globally so it's available in all your apps:
 
 ```js
 import Vue from "vue";
@@ -44,7 +45,7 @@ You must pass a `src` property with the link of the image:
 
 ```html
 <template>
-  <v-lazy-image src="http://lorempixel.com/400/200/"></v-lazy-image>
+  <v-lazy-image src="http://lorempixel.com/400/200/" />
 </template>
 ```
 
@@ -84,7 +85,7 @@ When the `src` image is loaded, a `v-lazy-image-loaded` class is added, so you c
   <v-lazy-image
     src="https://cdn-images-1.medium.com/max/1600/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
     src-placeholder="https://cdn-images-1.medium.com/max/80/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
-    ></v-lazy-image>
+    />
 </template>
 
 <style scoped>
@@ -102,14 +103,12 @@ You could listen to the `intersect` and `load` events for more complex animation
 
 ```html
 <template>
-  <div>
-    <v-lazy-image
-      src="https://cdn-images-1.medium.com/max/1600/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
-      src-placeholder="https://cdn-images-1.medium.com/max/80/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
-      @intersect="..."
-      @load="..."
-      ></v-lazy-image>
-  </div>
+  <v-lazy-image
+    src="https://cdn-images-1.medium.com/max/1600/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
+    src-placeholder="https://cdn-images-1.medium.com/max/80/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
+    @intersect="..."
+    @load="..."
+    />
 </template>
 ```
 
