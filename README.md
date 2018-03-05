@@ -9,6 +9,7 @@ Check out the fundaments on how it's built in [this Alligator.io article](https:
 ### Demos
 
 * [Simple demo](https://codesandbox.io/s/r5wmj970wm)
+* [Responsive images](codesandbox.io/s/k2kp64qkq7), by [@aarongarciah](https://twitter.com/aarongarciah)
 * [Progressive image loading with animations](https://codesandbox.io/s/9l3n6j5944), by [@aarongarciah](https://twitter.com/aarongarciah)
 * [Performant progressive blur using a SVG](https://codesandbox.io/s/2ox0z4ymop)
 
@@ -51,7 +52,8 @@ You must pass a `src` property with the link of the image:
 
 That image will be loaded as soon as the image enters the viewport.
 
-## Progressive loading
+
+## Progressive Loading
 
 You can use the `src-placeholder` property to define an image that is shown until the `src` image is loaded.
 
@@ -91,6 +93,32 @@ You could listen to the `intersect` and `load` events for more complex animation
 
 [@jmperezperez](https://twitter.com/jmperezperez) has written about the [progressive loading technique](https://jmperezperez.com/more-progressive-image-loading/) on his blog, in case you want a deeper explanation.
 
+## Responsive Images
+
+Using the srcset prop you can set images for different resolutions::
+
+```html
+<template>
+  <v-lazy-image
+    srcset="image.jpg 1x, image_2x.jpg 2x"
+    />
+</template>
+```
+
+When using the srcset attribute is recommended to use also src as a fallback for browsers that doesn't support the srcset and sizes attributes:
+
+```html
+<template>
+  <v-lazy-image
+    srcset="image-320w.jpg 320w, image-480w.jpg 480w"
+    sizes="(max-width: 320px) 280px, 440px"
+    src="image-480w.jpg"
+  />
+</template>
+```
+
+The `srcset` prop is combinable with `src-placeholder` in order to apply progressive loading.
+
 ## API
 
 Aside from the following API, you can pass any img attribute, such as `alt`, and they'll be added to the rendered `<img>` tag.
@@ -103,6 +131,7 @@ _Fields marked as (\*) are required._
 | ----------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `src`             | String _(\*)_ | Image `src` to lazy load when it intersects with the viewport                                                                                            |
 | `src-placeholder` | String        | If defined, it will be shown until the `src` image is loaded. <br> Useful for progressive image loading, [see demo](https://codesandbox.io/s/9l3n6j5944) |
+| `srcset`             | String | Images to be used for different resolutions 
 
 ### Events
 
