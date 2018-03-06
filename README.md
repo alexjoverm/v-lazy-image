@@ -52,7 +52,6 @@ You must pass a `src` property with the link of the image:
 
 That image will be loaded as soon as the image enters the viewport.
 
-
 ## Progressive Loading
 
 You can use the `src-placeholder` property to define an image that is shown until the `src` image is loaded.
@@ -127,11 +126,12 @@ _Fields marked as (\*) are required._
 
 ### Props
 
-| Name              | Type          | Description                                                                                                                                              |
-| ----------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `src`             | String _(\*)_ | Image `src` to lazy load when it intersects with the viewport                                                                                            |
-| `src-placeholder` | String        | If defined, it will be shown until the `src` image is loaded. <br> Useful for progressive image loading, [see demo](https://codesandbox.io/s/9l3n6j5944) |
-| `srcset`             | String | Images to be used for different resolutions 
+| Name                   | Type          | Description                                                                                                                                               |
+| ---------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `src`                  | String _(\*)_ | Image `src` to lazy load when it intersects with the viewport                                                                                             |
+| `src-placeholder`      | String        | If defined, it will be shown until the `src` image is loaded. <br> Useful for progressive image loading, [see demo](https://codesandbox.io/s/9l3n6j5944)  |
+| `srcset`               | String        | Images to be used for different resolutions                                                                                                               |
+| `intersection-options` | Object        | The [Intersection Observer options object](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Creating_an_intersection_observer). |
 
 ### Events
 

@@ -10,6 +10,10 @@ const VLazyImageComponent = {
     },
     srcset: {
       type: String
+    },
+    intersectionOptions: {
+      type: Object,
+      default: {}
     }
   },
   data: () => ({ observer: null, intersected: false, loaded: false }),
@@ -45,7 +49,7 @@ const VLazyImageComponent = {
         this.observer.disconnect();
         this.$emit("intersect");
       }
-    });
+    }, this.intersectionOptions);
 
     this.observer.observe(this.$el);
   },
