@@ -13,7 +13,7 @@ const VLazyImageComponent = {
     },
     intersectionOptions: {
       type: Object,
-      default: {}
+      default: () => ({})
     }
   },
   data: () => ({ observer: null, intersected: false, loaded: false }),
