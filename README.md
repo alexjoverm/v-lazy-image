@@ -13,7 +13,7 @@ Check out the fundaments on how it's built in [this Alligator.io article](https:
 * [Simple demo](https://codesandbox.io/s/r5wmj970wm)
 * [Responsive images](https://codesandbox.io/s/k2kp64qkq7), by [@aarongarciah](https://twitter.com/aarongarciah)
 * [Progressive image loading with animations](https://codesandbox.io/s/9l3n6j5944), by [@aarongarciah](https://twitter.com/aarongarciah)
-* [Performant progressive blur using a SVG](https://codesandbox.io/s/2ox0z4ymop)
+* [Performant progressive blur using SVG](https://codesandbox.io/s/2ox0z4ymop)
 
 ## Usage
 
@@ -44,7 +44,7 @@ export default {
 };
 ```
 
-You must pass a `src` property with the link of the image:
+You must pass an `src` property with the link of the image:
 
 ```html
 <template>
@@ -96,7 +96,7 @@ You could listen to the `intersect` and `load` events for more complex animation
 
 ## Responsive Images
 
-Using the srcset prop you can set images for different resolutions::
+Using the `srcset` property you can set images for different resolutions:
 
 ```html
 <template>
@@ -106,7 +106,7 @@ Using the srcset prop you can set images for different resolutions::
 </template>
 ```
 
-When using the srcset attribute is recommended to use also src as a fallback for browsers that doesn't support the srcset and sizes attributes:
+When using the `srcset` attribute is recommended to use also `src` as a fallback for browsers that doesn't support the `srcset` and `sizes` attributes:
 
 ```html
 <template>
@@ -122,7 +122,7 @@ The `srcset` prop is combinable with `src-placeholder` in order to apply progres
 
 ## API
 
-Aside from the following API, you can pass any img attribute, such as `alt`, and they'll be added to the rendered `<img>` tag.
+Aside from the following API, you can pass any *img* attribute, such as `alt`, and they'll be added to the rendered `<img>` tag.
 
 _Fields marked as (\*) are required._
 
@@ -139,5 +139,5 @@ _Fields marked as (\*) are required._
 
 | Name        | Description                                              |
 | ----------- | -------------------------------------------------------- |
-| `intersect` | Triggered when the image intersects in the viewport      |
+| `intersect` | Triggered when the image intersects the viewport         |
 | `load`      | Triggered when the lazy image defined in `src` is loaded |
