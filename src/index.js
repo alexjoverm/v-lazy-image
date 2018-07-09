@@ -36,7 +36,7 @@ const VLazyImageComponent = {
   },
   mounted() {
     this.$el.addEventListener("load", ev => {
-      if (this.$el.getAttribute('src') === this.src) {
+      if (this.$el.getAttribute('src') !== this.srcPlaceholder) {
         this.loaded = true;
         this.$emit("load");
       }
