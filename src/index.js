@@ -31,27 +31,27 @@ const VLazyImageComponent = {
       class: {
         "v-lazy-image": true,
         "v-lazy-image-loaded": this.loaded
+      },
+      on: {
+        load: () => {
+          if (this.$el.getAttribute('src') !== this.srcPlaceholder) {
+            this.loaded = true;
+            this.$emit("load");
+          }
+
+          this.observer = new IntersectionObserver(entries => {
+            const image = entries[0];
+            if (image.isIntersecting) {
+              this.intersected = true;
+              this.observer.disconnect();
+              this.$emit("intersect");
+            }
+          }, this.intersectionOptions);
+
+          this.observer.observe(this.$el);
+        }
       }
     });
-  },
-  mounted() {
-    this.$el.addEventListener("load", ev => {
-      if (this.$el.getAttribute('src') !== this.srcPlaceholder) {
-        this.loaded = true;
-        this.$emit("load");
-      }
-    });
-
-    this.observer = new IntersectionObserver(entries => {
-      const image = entries[0];
-      if (image.isIntersecting) {
-        this.intersected = true;
-        this.observer.disconnect();
-        this.$emit("intersect");
-      }
-    }, this.intersectionOptions);
-
-    this.observer.observe(this.$el);
   },
   destroyed() {
     this.observer.disconnect();
