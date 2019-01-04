@@ -12,6 +12,7 @@
   },
   "scripts": {
     "build": "rollit",
+    "install": "npm run build",
     "prepublishOnly": "npm run build"
   },
   "repository": {
