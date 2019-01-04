@@ -2,10 +2,10 @@
   "name": "v-lazy-image-ssr",
   "version": "1.2.2",
   "description": "A Vue.js component to lazy load images using the Intersection Observer",
-  "main": "dist/v-lazy-image.cjs.js",
-  "module": "dist/v-lazy-image.es.js",
-  "unpkg": "dist/v-lazy-image.js",
-  "browser": "dist/v-lazy-image.js",
+  "main": "dist/v-lazy-image-ssr.cjs.js",
+  "module": "dist/v-lazy-image-ssr.es.js",
+  "unpkg": "dist/v-lazy-image-ssr.js",
+  "browser": "dist/v-lazy-image-ssr.js",
   "author": {
     "name": "Alex Jover Morales",
     "email": "alexjovermorales@gmail.com"
