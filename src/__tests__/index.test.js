@@ -33,9 +33,13 @@ test('picture renders correctly', () => {
       disconnect: () => {}
     };
   };
+  let source = '<source srcset="test" />';
   const wrapper = shallowMount(
     Component,
     {
+      slots: {
+        default: [source, source],
+      },
       propsData: {
         src: "http://lorempixel.com/400/200/",
         srcset: "image-320w.jpg 320w, image-480w.jpg 480w",

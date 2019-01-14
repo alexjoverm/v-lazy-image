@@ -122,14 +122,16 @@ The `srcset` prop is combinable with `src-placeholder` in order to apply progres
 
 ## Picture
 
-Instead of rendering as an `img` element, you can render as a `picture` element with the prop `usePicture`.  
+If you want to wrap the `img` in a `picture` tag, use the prop `usePicture`. You can then use slots to add additional elements above the `img` element`.
 
 ```html
 <v-lazy-image
   srcset="image-320w.jpg 320w, image-480w.jpg 480w"
   alt="Fallback"
   use-picture
-/>
+>
+  <source srcset="image-320w.jpg 320w, image-480w.jpg 480w" />
+</v-lazy-image>
 
 ```
 

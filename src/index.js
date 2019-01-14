@@ -32,21 +32,14 @@ const VLazyImageComponent = {
   },
   render(h) {
     let img = h("img", {
-      domProps: Object.assign(this.$attrs, { src: this.srcImage }),
+      domProps: Object.assign(this.$attrs, this.srcsetImage ? { srcset: this.srcsetImage, } : {}, { src: this.srcImage }),
       class: {
         "v-lazy-image": true,
         "v-lazy-image-loaded": this.loaded
       }
     });
     if (this.usePicture) {
-      let source = h("source", {
-        domProps: Object.assign(this.$attrs, this.srcsetImage ? { srcset: this.srcsetImage, } : {}),
-        class: {
-          "v-lazy-image": true,
-          "v-lazy-image-loaded": this.loaded
-        }
-      });
-      return h("picture", {}, [ source, img ])
+      return h("picture", {}, [ this.$slots.default, img ])
 
     } else {
       return img;

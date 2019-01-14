@@ -10,10 +10,10 @@ exports[`img renders correctly 1`] = `
 exports[`picture renders correctly 1`] = `
 <picture>
   <source
-    class="v-lazy-image"
-    sizes="(max-width: 320px) 280px, 440px"
-    src="http://lorempixel.com/400/200/"
-    srcset="image-320w.jpg 320w, image-480w.jpg 480w"
+    srcset="test"
+  />
+  <source
+    srcset="test"
   />
   <img
     alt="Test"
