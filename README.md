@@ -6,7 +6,7 @@
 
 A Vue.js component to lazy load an image automatically when it enters the viewport using the [Intersection Observer API](https://developer.mozilla.org/docs/Web/API/Intersection_Observer_API).
 
-Check out the fundaments on how it's built in [this Alligator.io article](https://alligator.io/vuejs/lazy-image/).
+> Do you know **[VueDose](https://vuedose.tips)**? It's where you can learn tips about the Vue.js ecosystem in a concise format, perfect for busy devs! 🦄
 
 ### Demos
 
