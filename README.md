@@ -106,7 +106,7 @@ Using the `srcset` property you can set images for different resolutions:
 </template>
 ```
 
-When using the `srcset` attribute is recommended to use also `src` as a fallback for browsers that doesn't support the `srcset` and `sizes` attributes:
+When using the `srcset` attribute is recommended to use also `src` as a fallback for browsers that don't support the `srcset` and `sizes` attributes:
 
 ```html
 <template>
@@ -119,6 +119,32 @@ When using the `srcset` attribute is recommended to use also `src` as a fallback
 ```
 
 The `srcset` prop is combinable with `src-placeholder` in order to apply progressive loading.
+
+## Picture
+
+If you want to wrap the `img` in a `picture` tag, use the prop `usePicture`. You can then use slots to add additional elements above the `img` element`.
+
+```html
+<v-lazy-image
+  srcset="image-320w.jpg 320w, image-480w.jpg 480w"
+  alt="Fallback"
+  use-picture
+>
+  <source srcset="image-320w.jpg 320w, image-480w.jpg 480w" />
+</v-lazy-image>
+
+```
+
+Renders as:
+
+```html
+<picture>
+  <source srcset="image-320w.jpg 320w, image-480w.jpg 480w" />
+  <img srcset="image-320w.jpg 320w, image-480w.jpg 480w" alt="Fallback"/>
+</picture>
+```
+
+Note you can use the [picture polyfill](https://github.com/scottjehl/picturefill).
 
 ## API
 

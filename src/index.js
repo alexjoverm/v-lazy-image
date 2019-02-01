@@ -14,8 +14,13 @@ const VLazyImageComponent = {
     intersectionOptions: {
       type: Object,
       default: () => ({})
+    },
+    usePicture: {
+      type: Boolean,
+      default: false
     }
   },
+  inheritAttrs: false,
   data: () => ({ observer: null, intersected: false, loaded: false }),
   computed: {
     srcImage() {
@@ -25,22 +30,36 @@ const VLazyImageComponent = {
       return this.intersected && this.srcset ? this.srcset : false;
     }
   },
+  methods: {
+    load() {
+      if (this.$el.getAttribute("src") !== this.srcPlaceholder) {
+        this.loaded = true;
+        this.$emit("load");
+      }
+    }
+  },
   render(h) {
-    return h("img", {
-      attrs: { src: this.srcImage, srcset: this.srcsetImage },
+    let img = h("img", {
+      attrs: {
+        src: this.srcImage,
+        srcset: this.srcsetImage
+      },
+      domProps: this.$attrs,
       class: {
         "v-lazy-image": true,
         "v-lazy-image-loaded": this.loaded
       },
-      on: {
-        load: () => {
-          if (this.$el.getAttribute("src") !== this.srcPlaceholder) {
-            this.loaded = true;
-            this.$emit("load");
-          }
-        }
-      }
+      on: { load: this.load }
     });
+
+    if (this.usePicture) {
+      return h("picture", { on: { load: this.load } }, [
+        this.$slots.default,
+        img
+      ]);
+    } else {
+      return img;
+    }
   },
   mounted() {
     this.observer = new IntersectionObserver(entries => {
@@ -51,7 +70,6 @@ const VLazyImageComponent = {
         this.$emit("intersect");
       }
     }, this.intersectionOptions);
-
     this.observer.observe(this.$el);
   },
   destroyed() {
