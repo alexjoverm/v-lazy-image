@@ -30,38 +30,52 @@ const VLazyImageComponent = {
       return this.intersected && this.srcset ? this.srcset : false;
     }
   },
+  methods: {
+    load() {
+      if (this.$el.getAttribute("src") !== this.srcPlaceholder) {
+        this.loaded = true;
+        this.$emit("load");
+      }
+    }
+  },
   render(h) {
     let img = h("img", {
-      domProps: Object.assign(this.$attrs, this.srcsetImage ? { srcset: this.srcsetImage, } : {}, { src: this.srcImage }),
+      attrs: {
+        src: this.srcImage,
+        srcset: this.srcsetImage
+      },
+      domProps: this.$attrs,
       class: {
         "v-lazy-image": true,
         "v-lazy-image-loaded": this.loaded
-      }
+      },
+      on: { load: this.load }
     });
     if (this.usePicture) {
-      return h("picture", {}, [ this.$slots.default, img ])
-
+      return h("picture", { on: { load: this.load } }, [
+        this.$slots.default,
+        img
+      ]);
     } else {
       return img;
     }
   },
   mounted() {
-    this.$el.addEventListener("load", ev => {
-      if (this.$el.getAttribute('src') !== this.srcPlaceholder) {
-        this.loaded = true;
-        this.$emit("load");
-      }
-    });
-
-    this.observer = new IntersectionObserver(entries => {
-      const image = entries[0];
-      if (image.isIntersecting) {
-        this.intersected = true;
-        this.observer.disconnect();
-        this.$emit("intersect");
-      }
-    }, this.intersectionOptions);
-    this.observer.observe(this.$el);
+    if ("IntersectionObserver" in window) {
+      this.observer = new IntersectionObserver(entries => {
+        const image = entries[0];
+        if (image.isIntersecting) {
+          this.intersected = true;
+          this.observer.disconnect();
+          this.$emit("intersect");
+        }
+      }, this.intersectionOptions);
+      this.observer.observe(this.$el);
+    } else {
+      console.error(
+        "v-lazy-image: this browser doesn't support IntersectionObserver. Please use this polyfill to make it work https://github.com/w3c/IntersectionObserver/tree/master/polyfill."
+      );
+    }
   },
   destroyed() {
     this.observer.disconnect();
