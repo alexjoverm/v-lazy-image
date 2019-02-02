@@ -5,7 +5,7 @@
   "main": "dist/v-lazy-image.cjs.js",
   "module": "dist/v-lazy-image.es.js",
   "unpkg": "dist/v-lazy-image.js",
-  "browser": "dist/v-lazy-image.js",
+  "browser": "dist/v-lazy-image.es.js",
   "author": {
     "name": "Alex Jover Morales",
     "email": "alexjovermorales@gmail.com"
