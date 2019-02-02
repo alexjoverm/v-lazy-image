@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+<div id="app">
+    <div style="padding-top: 2000px">
+        <h1>Img</h1>
+        <v-lazy-image :src="mobileImg"
+                      :alt="altText"
+                      :intersection-options="{rootMargin: '10%'}"
+                      use-picture>
+            <source :srcset="desktopImg" :media="breakpointQuery" />
+        </v-lazy-image>
+    </div>
+</div>
+<script type="text/javascript" src="vue.js"></script>
+<script type="module" src="plugin.ejs"></script>
+<script type="module">
+    import Vue from './vue.ejs';
+    import { VLazyImagePlugin } from "./plugin.ejs";
+
+    Vue.use(VLazyImagePlugin);
+
+    new Vue({
+      el: '#app',
+      data: () => ({
+        mobileImg: "mobile",
+        altText: "",
+        desktopImg: "desktop",
+        breakpointQuery: "(min-width: 800px)"
+      })
+    });
+</script>
+</body>
+</html>
