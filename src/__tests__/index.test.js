@@ -79,10 +79,12 @@ test('picture element lazy loads', () => {
     }
   );
   let imgWrapper = wrapper.find("img");
+  expect(wrapper.vm.intersected).toBe(false);
   expect(imgWrapper.is('img')).toBe(true);
   expect(imgWrapper.attributes('src')).toBe("");
   intersect([
     { isIntersecting: true }
   ]);
+  expect(wrapper.vm.intersected).toBe(true);
   expect(imgWrapper.attributes('src')).toBe(src);
 });
