@@ -54,3 +54,37 @@ test('picture renders correctly', () => {
   ]);
   expect(wrapper.element).toMatchSnapshot();
 });
+
+test('picture element lazy loads', () => {
+  let intersect;
+  global.IntersectionObserver = function(cb) {
+    intersect = cb;
+    return {
+      observe: () => {},
+      disconnect: () => {}
+    };
+  };
+  let source = '<source srcset="test" />';
+  let src = "http://lorempixel.com/400/200/";
+  const wrapper = shallowMount(
+    Component,
+    {
+      slots: {
+        default: [source, source],
+      },
+      propsData: {
+        src,
+        usePicture: true
+      }
+    }
+  );
+  expect(wrapper.vm.intersected).toBe(false);
+  expect(wrapper.isEmpty()).toBe(true);
+  intersect([
+    { isIntersecting: true }
+  ]);
+  let imgWrapper = wrapper.find("img");
+  expect(imgWrapper.is('img')).toBe(true);
+  expect(wrapper.vm.intersected).toBe(true);
+  expect(imgWrapper.attributes('src')).toBe(src);
+});

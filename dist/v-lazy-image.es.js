@@ -1,4 +1,10 @@
-const VLazyImageComponent = {
+/**
+ * v-lazy-image v1.3.1
+ * (c) 2019 Alex Jover Morales <alexjovermorales@gmail.com>
+ * @license MIT
+ */
+
+var VLazyImageComponent = {
   props: {
     src: {
       type: String,
@@ -13,7 +19,7 @@ const VLazyImageComponent = {
     },
     intersectionOptions: {
       type: Object,
-      default: () => ({})
+      default: function () { return ({}); }
     },
     usePicture: {
       type: Boolean,
@@ -21,25 +27,25 @@ const VLazyImageComponent = {
     }
   },
   inheritAttrs: false,
-  data: () => ({ observer: null, intersected: false, loaded: false }),
+  data: function () { return ({ observer: null, intersected: false, loaded: false }); },
   computed: {
-    srcImage() {
+    srcImage: function srcImage() {
       return this.intersected ? this.src : this.srcPlaceholder;
     },
-    srcsetImage() {
+    srcsetImage: function srcsetImage() {
       return this.intersected && this.srcset ? this.srcset : false;
     }
   },
   methods: {
-    load() {
+    load: function load() {
       if (this.$el.getAttribute("src") !== this.srcPlaceholder) {
         this.loaded = true;
         this.$emit("load");
       }
     }
   },
-  render(h) {
-    let img = h("img", {
+  render: function render(h) {
+    var img = h("img", {
       attrs: {
         src: this.srcImage,
         srcset: this.srcsetImage
@@ -57,14 +63,16 @@ const VLazyImageComponent = {
       return img;
     }
   },
-  mounted() {
+  mounted: function mounted() {
+    var this$1 = this;
+
     if ("IntersectionObserver" in window) {
-      this.observer = new IntersectionObserver(entries => {
-        const image = entries[0];
+      this.observer = new IntersectionObserver(function (entries) {
+        var image = entries[0];
         if (image.isIntersecting) {
-          this.intersected = true;
-          this.observer.disconnect();
-          this.$emit("intersect");
+          this$1.intersected = true;
+          this$1.observer.disconnect();
+          this$1.$emit("intersect");
         }
       }, this.intersectionOptions);
       this.observer.observe(this.$el);
@@ -74,15 +82,16 @@ const VLazyImageComponent = {
       );
     }
   },
-  destroyed() {
+  destroyed: function destroyed() {
     this.observer.disconnect();
   }
 };
 
-export default VLazyImageComponent;
-
-export const VLazyImagePlugin = {
-  install: (Vue, opts) => {
+var VLazyImagePlugin = {
+  install: function (Vue, opts) {
     Vue.component("VLazyImage", VLazyImageComponent);
   }
 };
+
+export { VLazyImagePlugin };
+export default VLazyImageComponent;

@@ -5,7 +5,7 @@
   "main": "dist/v-lazy-image.cjs.js",
   "module": "dist/v-lazy-image.es.js",
   "unpkg": "dist/v-lazy-image.js",
-  "browser": "dist/v-lazy-image.js",
+  "browser": "dist/v-lazy-image.es.js",
   "author": {
     "name": "Alex Jover Morales",
     "email": "alexjovermorales@gmail.com"
@@ -41,7 +41,7 @@
     "intersection-observer": "^0.5.1",
     "jest": "^23.6.0",
     "jest-serializer-vue": "^2.0.2",
-    "rollit": "0.0.7"
+    "rollit": "0.0.8"
   },
   "peerDependencies": {
     "vue": "^2.0.0"
