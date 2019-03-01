@@ -6,7 +6,7 @@ const VLazyImageComponent = {
     },
     srcPlaceholder: {
       type: String,
-      default: ""
+      default: "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
     },
     srcset: {
       type: String
