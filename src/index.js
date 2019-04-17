@@ -24,7 +24,7 @@ const VLazyImageComponent = {
   data: () => ({ observer: null, intersected: false, loaded: false }),
   computed: {
     srcImage() {
-      return this.intersected ? this.src : this.srcPlaceholder;
+      return this.intersected && this.src ? this.src : this.srcPlaceholder;
     },
     srcsetImage() {
       return this.intersected && this.srcset ? this.srcset : false;
