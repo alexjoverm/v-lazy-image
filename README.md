@@ -65,7 +65,7 @@ When the `src` image is loaded, a `v-lazy-image-loaded` class is added, so you c
   <v-lazy-image
     src="https://cdn-images-1.medium.com/max/1600/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
     src-placeholder="https://cdn-images-1.medium.com/max/80/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
-    />
+  />
 </template>
 
 <style scoped>
@@ -79,6 +79,14 @@ When the `src` image is loaded, a `v-lazy-image-loaded` class is added, so you c
 </style>
 ```
 
+In case you are using Webpack bundler for images too (just like Vue-cli):
+```html
+<v-lazy-image
+  src="https://cdn-images-1.medium.com/max/1600/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
+  :src-placeholder="require('../assets/img.jpg')"
+/>
+```
+
 You could listen to the `intersect` and `load` events for more complex animations and state handling:
 
 ```html
@@ -88,7 +96,7 @@ You could listen to the `intersect` and `load` events for more complex animation
     src-placeholder="https://cdn-images-1.medium.com/max/80/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
     @intersect="..."
     @load="..."
-    />
+  />
 </template>
 ```
 
@@ -102,7 +110,7 @@ Using the `srcset` property you can set images for different resolutions:
 <template>
   <v-lazy-image
     srcset="image.jpg 1x, image_2x.jpg 2x"
-    />
+  />
 </template>
 ```
 
@@ -140,7 +148,7 @@ Renders as:
 ```html
 <picture>
   <source srcset="image-320w.jpg 320w, image-480w.jpg 480w" />
-  <img srcset="image-320w.jpg 320w, image-480w.jpg 480w" alt="Fallback"/>
+  <img srcset="image-320w.jpg 320w, image-480w.jpg 480w" alt="Fallback" />
 </picture>
 ```
 
@@ -154,12 +162,13 @@ _Fields marked as (\*) are required._
 
 ### Props
 
-| Name                   | Type          | Description                                                                                                                                               |
-| ---------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `src`                  | String _(\*)_ | Image `src` to lazy load when it intersects with the viewport                                                                                             |
-| `src-placeholder`      | String        | If defined, it will be shown until the `src` image is loaded. <br> Useful for progressive image loading, [see demo](https://codesandbox.io/s/9l3n6j5944)  |
-| `srcset`               | String        | Images to be used for different resolutions                                                                                                               |
-| `intersection-options` | Object        | The [Intersection Observer options object](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Creating_an_intersection_observer). |
+| Name                   | Type          | Default       | Description                                                                                                                                               |
+| ---------------------- | ------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `src`                  | String _(\*)_ |       -       | Image `src` to lazy load when it intersects with the viewport                                                                                             |
+| `src-placeholder`      | String        | ' '           | If defined, it will be shown until the `src` image is loaded. <br> Useful for progressive image loading, [see demo](https://codesandbox.io/s/9l3n6j5944)  |
+| `srcset`               | String        |       -       | Images to be used for different resolutions                                                                                                               |
+| `intersection-options` | Object        | () => ({})    | The [Intersection Observer options object](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Creating_an_intersection_observer). |
+| `use-picture`          | Boolean       | false         | Wrap the img in a picture tag. |
 
 ### Events
 
