@@ -162,6 +162,7 @@ _Fields marked as (\*) are required._
 | `src-placeholder`      | String        | If defined, it will be shown until the `src` image is loaded. <br> Useful for progressive image loading, [see demo](https://codesandbox.io/s/9l3n6j5944)  |
 | `srcset`               | String        | Images to be used for different resolutions                                                                                                               |
 | `intersection-options` | Object        | The [Intersection Observer options object](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Creating_an_intersection_observer). |
+| `use-picture`          | Boolean       | If defined, `v-lazy-image` will render as a picture element with a image tag and possible source elements (when defined) inside it                        |
 
 ### Events
 
