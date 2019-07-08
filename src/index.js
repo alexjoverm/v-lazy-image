@@ -24,7 +24,7 @@ const VLazyImageComponent = {
   data: () => ({ observer: null, intersected: false, loaded: false }),
   computed: {
     srcImage() {
-      return this.intersected ? this.src : this.srcPlaceholder;
+      return this.intersected && this.src ? this.src : this.srcPlaceholder;
     },
     srcsetImage() {
       return this.intersected && this.srcset ? this.srcset : false;
@@ -68,14 +68,12 @@ const VLazyImageComponent = {
         }
       }, this.intersectionOptions);
       this.observer.observe(this.$el);
-    } else {
-      console.error(
-        "v-lazy-image: this browser doesn't support IntersectionObserver. Please use this polyfill to make it work https://github.com/w3c/IntersectionObserver/tree/master/polyfill."
-      );
     }
   },
   destroyed() {
-    this.observer.disconnect();
+    if ("IntersectionObserver" in window) {
+      this.observer.disconnect();
+    }
   }
 };
 
