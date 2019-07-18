@@ -169,7 +169,7 @@ _Fields marked as (\*) are required._
 | `src`                  | String _(\*)_ |       -       | Image `src` to lazy load when it intersects with the viewport                                                                                             |
 | `src-placeholder`      | String        | ' '           | If defined, it will be shown until the `src` image is loaded. <br> Useful for progressive image loading, [see demo](https://codesandbox.io/s/9l3n6j5944)  |
 | `srcset`               | String        |       -       | Images to be used for different resolutions                                                                                                               |
-| `srcFallback`          | String        |       -       | Image to be used when the image failed to load                                                                                                            |
+| `src-fallback`          | String        |       -       | Image to be used when the image failed to load                                                                                                            |
 | `intersection-options` | Object        | () => ({})    | The [Intersection Observer options object](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Creating_an_intersection_observer). |
 | `use-picture`          | Boolean       | false         | Wrap the img in a picture tag. |
 
