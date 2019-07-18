@@ -6,7 +6,11 @@ const VLazyImageComponent = {
     },
     srcPlaceholder: {
       type: String,
-      default: "//:0"
+      default: "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+    },
+    srcFallback: {
+      type: String,
+      default: "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
     },
     srcset: {
       type: String
@@ -21,12 +25,25 @@ const VLazyImageComponent = {
     }
   },
   inheritAttrs: false,
-  data: () => ({ observer: null, intersected: false, loaded: false }),
+  data: () => ({
+    observer: null,
+    intersected: false,
+    loaded: false,
+    notFound: false,
+  }),
   computed: {
     srcImage() {
+      if (this.notFound) {
+        return this.srcFallback;
+      }
+
       return this.intersected && this.src ? this.src : this.srcPlaceholder;
     },
     srcsetImage() {
+      if (this.notFound) {
+        return false;
+      }
+
       return this.intersected && this.srcset ? this.srcset : false;
     }
   },
@@ -36,6 +53,10 @@ const VLazyImageComponent = {
         this.loaded = true;
         this.$emit("load");
       }
+    },
+    error() {
+      this.notFound = true;
+      this.$emit("error");
     }
   },
   render(h) {
@@ -49,31 +70,46 @@ const VLazyImageComponent = {
         "v-lazy-image": true,
         "v-lazy-image-loaded": this.loaded
       },
-      on: { load: this.load }
+      on: {
+        load: this.load,
+        error: this.error,
+      }
     });
-    if (this.usePicture) {
-      return h("picture", { on: { load: this.load } }, this.intersected ? [ this.$slots.default, img ] : [] );
-    } else {
+
+    if (!this.usePicture) {
       return img;
     }
+
+    return h(
+      "picture",
+      { on: { load: this.load } },
+      this.intersected ? [ this.$slots.default, img ] : []
+    );
   },
   mounted() {
-    if ("IntersectionObserver" in window) {
-      this.observer = new IntersectionObserver(entries => {
-        const image = entries[0];
-        if (image.isIntersecting) {
-          this.intersected = true;
-          this.observer.disconnect();
-          this.$emit("intersect");
-        }
-      }, this.intersectionOptions);
-      this.observer.observe(this.$el);
+    if (!"IntersectionObserver" in window) {
+      return
     }
+
+    this.observer = new IntersectionObserver(entries => {
+      if (
+        entries[0].isIntersecting ||
+        entries[0].isIntersecting === undefined
+      ) {
+        this.intersected = true;
+        this.observer.disconnect();
+        this.$emit("intersect");
+      }
+    }, this.intersectionOptions);
+
+    this.observer.observe(this.$el);
   },
   destroyed() {
-    if ("IntersectionObserver" in window) {
-      this.observer.disconnect();
+    if (!"IntersectionObserver" in window) {
+      return
     }
+
+    this.observer.disconnect();
   }
 };
 
