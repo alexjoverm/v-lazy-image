@@ -52,7 +52,11 @@ const VLazyImageComponent = {
       on: { load: this.load }
     });
     if (this.usePicture) {
-      return h("picture", { on: { load: this.load } }, this.intersected ? [ this.$slots.default, img ] : [] );
+        if(!this.intersected) {
+            return h("picture", {attrs: {style: "padding: 1px;"}, domProps: this.$attrs});
+        } else{
+            return h("picture", { on: { load: this.load } }, this.intersected ? [ this.$slots.default, img ] : [] );
+        }
     } else {
       return img;
     }
