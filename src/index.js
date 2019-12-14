@@ -30,6 +30,14 @@ const VLazyImageComponent = {
       return this.intersected && this.srcset ? this.srcset : false;
     }
   },
+  watch: {
+    src(newSrc, oldSrc) {
+      if ('IntersectionObserver' in window) {
+        this.intersected = false;
+        this.observer.observe(this.$el);
+      }
+    }
+  },
   methods: {
     load() {
       if (this.$el.getAttribute("src") !== this.srcPlaceholder) {
