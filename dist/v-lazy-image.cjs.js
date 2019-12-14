@@ -1,5 +1,5 @@
 /**
- * v-lazy-image v1.3.1
+ * v-lazy-image v1.3.2
  * (c) 2019 Alex Jover Morales <alexjovermorales@gmail.com>
  * @license MIT
  */
@@ -16,7 +16,7 @@ var VLazyImageComponent = {
     },
     srcPlaceholder: {
       type: String,
-      default: ""
+      default: '//:0'
     },
     srcset: {
       type: String
@@ -34,35 +34,47 @@ var VLazyImageComponent = {
   data: function () { return ({ observer: null, intersected: false, loaded: false }); },
   computed: {
     srcImage: function srcImage() {
-      return this.intersected ? this.src : this.srcPlaceholder;
+      return this.intersected && this.src ? this.src : this.srcPlaceholder;
     },
     srcsetImage: function srcsetImage() {
       return this.intersected && this.srcset ? this.srcset : false;
     }
   },
+  watch: {
+    src: function src(newSrc, oldSrc) {
+      if ('IntersectionObserver' in window) {
+        this.intersected = false;
+        this.observer.observe(this.$el);
+      }
+    }
+  },
   methods: {
     load: function load() {
-      if (this.$el.getAttribute("src") !== this.srcPlaceholder) {
+      if (this.$el.getAttribute('src') !== this.srcPlaceholder) {
         this.loaded = true;
-        this.$emit("load");
+        this.$emit('load');
       }
     }
   },
   render: function render(h) {
-    var img = h("img", {
+    var img = h('img', {
       attrs: {
         src: this.srcImage,
         srcset: this.srcsetImage
       },
       domProps: this.$attrs,
       class: {
-        "v-lazy-image": true,
-        "v-lazy-image-loaded": this.loaded
+        'v-lazy-image': true,
+        'v-lazy-image-loaded': this.loaded
       },
       on: { load: this.load }
     });
     if (this.usePicture) {
-      return h("picture", { on: { load: this.load } }, this.intersected ? [ this.$slots.default, img ] : [] );
+      return h(
+        'picture',
+        { on: { load: this.load } },
+        this.intersected ? [this.$slots.default, img] : []
+      );
     } else {
       return img;
     }
@@ -70,30 +82,28 @@ var VLazyImageComponent = {
   mounted: function mounted() {
     var this$1 = this;
 
-    if ("IntersectionObserver" in window) {
+    if ('IntersectionObserver' in window) {
       this.observer = new IntersectionObserver(function (entries) {
         var image = entries[0];
         if (image.isIntersecting) {
           this$1.intersected = true;
           this$1.observer.disconnect();
-          this$1.$emit("intersect");
+          this$1.$emit('intersect');
         }
       }, this.intersectionOptions);
       this.observer.observe(this.$el);
-    } else {
-      console.error(
-        "v-lazy-image: this browser doesn't support IntersectionObserver. Please use this polyfill to make it work https://github.com/w3c/IntersectionObserver/tree/master/polyfill."
-      );
     }
   },
   destroyed: function destroyed() {
-    this.observer.disconnect();
+    if ('IntersectionObserver' in window) {
+      this.observer.disconnect();
+    }
   }
 };
 
 var VLazyImagePlugin = {
   install: function (Vue, opts) {
-    Vue.component("VLazyImage", VLazyImageComponent);
+    Vue.component('VLazyImage', VLazyImageComponent);
   }
 };
 
