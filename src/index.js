@@ -6,7 +6,7 @@ const VLazyImageComponent = {
     },
     srcPlaceholder: {
       type: String,
-      default: "//:0"
+      default: "data:,"
     },
     srcset: {
       type: String
