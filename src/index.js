@@ -36,6 +36,9 @@ const VLazyImageComponent = {
         this.loaded = true;
         this.$emit("load");
       }
+    },
+    error() {
+      this.$emit("error", this.$el)
     }
   },
   render(h) {
@@ -49,7 +52,7 @@ const VLazyImageComponent = {
         "v-lazy-image": true,
         "v-lazy-image-loaded": this.loaded
       },
-      on: { load: this.load }
+      on: { load: this.load, error: this.error }
     });
     if (this.usePicture) {
       return h(

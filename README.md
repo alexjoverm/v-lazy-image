@@ -178,3 +178,4 @@ _Fields marked as (\*) are required._
 | ----------- | -------------------------------------------------------- |
 | `intersect` | Triggered when the image intersects the viewport         |
 | `load`      | Triggered when the lazy image defined in `src` is loaded |
+| `error`     | Triggered when the lazy image defined in `src` fails to load |
