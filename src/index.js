@@ -34,7 +34,7 @@ const VLazyImageComponent = {
     load() {
       if (this.$el.getAttribute("src") !== this.srcPlaceholder) {
         this.loaded = true;
-        this.$emit("load");
+        this.$emit('load', this.$el);
       }
     },
     error() {
