@@ -67,8 +67,10 @@ const VLazyImageComponent = {
   mounted() {
     if ("IntersectionObserver" in window) {
       this.observer = new IntersectionObserver(entries => {
-        const image = entries[0];
-        if (image.isIntersecting) {
+        // Use `intersectionRatio` because of Edge 15's
+        // lack of support for `isIntersecting`.
+        // See: https://github.com/w3c/IntersectionObserver/issues/211
+        if (entries.some(e => e.isIntersecting || e.intersectionRatio > 0)) {
           this.intersected = true;
           this.observer.disconnect();
           this.$emit("intersect");
@@ -78,7 +80,7 @@ const VLazyImageComponent = {
     }
   },
   destroyed() {
-    if ("IntersectionObserver" in window) {
+    if (this.observer) {
       this.observer.disconnect();
     }
   }
