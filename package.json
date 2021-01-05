@@ -44,7 +44,7 @@
     "rollit": "0.0.8"
   },
   "peerDependencies": {
-    "vue": "^2.0.0"
+    "vue": "^3.0.0"
   },
   "jest": {
     "moduleFileExtensions": [
