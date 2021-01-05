@@ -1,3 +1,5 @@
+import { h } from 'vue';
+
 const VLazyImageComponent = {
   props: {
     src: {
@@ -41,28 +43,28 @@ const VLazyImageComponent = {
       this.$emit("error", this.$el)
     }
   },
-  render(h) {
-    let img = h("img", {
-      attrs: {
-        src: this.srcImage,
-        srcset: this.srcsetImage
-      },
-      domProps: this.$attrs,
+  render() {
+    const img = h('img', {
+      ...this.$attrs,
+      src: this.srcImage ? this.srcImage : null,
+      srcset: this.srcsetImage ? this.srcsetImage : null,
       class: {
-        "v-lazy-image": true,
-        "v-lazy-image-loaded": this.loaded
+        'v-lazy-image': true,
+        'v-lazy-image-loaded': this.loaded,
       },
-      on: { load: this.load, error: this.error }
+      onLoad: this.load,
+      onError: this.error,
     });
+
     if (this.usePicture) {
       return h(
-        "picture",
-        { on: { load: this.load } },
-        this.intersected ? [this.$slots.default, img] : [img]
+        'picture',
+        { onLoad: this.load },
+        this.intersected ? [this.$slots.default(), img] : [img],
       );
-    } else {
-      return img;
     }
+
+    return img;
   },
   mounted() {
     if ("IntersectionObserver" in window) {
@@ -77,11 +79,11 @@ const VLazyImageComponent = {
       this.observer.observe(this.$el);
     }
   },
-  destroyed() {
+  unmounted() {
     if ("IntersectionObserver" in window) {
       this.observer.disconnect();
     }
-  }
+  },
 };
 
 export default VLazyImageComponent;
