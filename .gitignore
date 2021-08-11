@@ -1,3 +1,13 @@
 node_modules
-.idea
+.DS_Store
 dist
+dist-ssr
+*.local
+
+# Yarn
+.yarn/*
+!.yarn/cache
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions

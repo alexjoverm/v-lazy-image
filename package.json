@@ -1,57 +1,13 @@
 {
-  "name": "v-lazy-image",
-  "version": "1.4.0",
-  "description": "A Vue.js component to lazy load images using the Intersection Observer.",
-  "main": "dist/v-lazy-image.cjs.js",
-  "module": "dist/v-lazy-image.es.js",
-  "unpkg": "dist/v-lazy-image.js",
-  "browser": "dist/v-lazy-image.js",
-  "author": {
-    "name": "Alex Jover Morales",
-    "email": "alexjovermorales@gmail.com"
-  },
+  "name": "v-lazy-image-ws",
+  "version": "0.0.0",
   "scripts": {
-    "build": "rollit",
-    "prepublishOnly": "npm run build",
-    "test": "jest"
+    "demo2": "yarn workspace playground-vue2 demo",
+    "demo3": "yarn workspace playground-vue3 demo"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/alexjoverm/v-lazy-image.git"
-  },
-  "keywords": [
-    "vue",
-    "js",
-    "lazy",
-    "load",
-    "image",
-    "intersection",
-    "observer"
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/alexjoverm/v-lazy-image/issues"
-  },
-  "homepage": "https://github.com/alexjoverm/v-lazy-image#readme",
-  "devDependencies": {
-    "@vue/test-utils": "^1.0.0-beta.28",
-    "babel-core": "^6.26.3",
-    "babel-jest": "^23.6.0",
-    "babel-preset-env": "^1.7.0",
-    "intersection-observer": "^0.5.1",
-    "jest": "^23.6.0",
-    "jest-serializer-vue": "^2.0.2",
-    "rollit": "0.0.8"
-  },
-  "peerDependencies": {
-    "vue": "^2.0.0"
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "js"
-    ],
-    "snapshotSerializers": [
-      "jest-serializer-vue"
-    ]
-  }
+  "workspaces": [
+    "lib",
+    "playground-vue2",
+    "playground-vue3"
+  ]
 }

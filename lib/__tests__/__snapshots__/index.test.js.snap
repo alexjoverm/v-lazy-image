@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`img renders correctly 1`] = `
+<img
+  class="v-lazy-image"
+  src="http://lorempixel.com/400/200/"
+/>
+`;
+
+exports[`picture renders correctly 1`] = `
+<picture>
+  <source
+    srcset="test"
+  />
+  <source
+    srcset="test"
+  />
+  <img
+    alt="Test"
+    class="v-lazy-image"
+    sizes="(max-width: 320px) 280px, 440px"
+    src="http://lorempixel.com/400/200/"
+    srcset="image-320w.jpg 320w, image-480w.jpg 480w"
+  />
+</picture>
+`;
