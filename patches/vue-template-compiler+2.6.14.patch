@@ -1,0 +1,18 @@
+diff --git a/node_modules/vue-template-compiler/index.js b/node_modules/vue-template-compiler/index.js
+index dcc7e6c..89ad77f 100644
+--- a/node_modules/vue-template-compiler/index.js
++++ b/node_modules/vue-template-compiler/index.js
+@@ -1,11 +1,11 @@
+ try {
+-  var vueVersion = require('vue').version
++  var vueVersion = require('vue2').version
+ } catch (e) {}
+ 
+ var packageName = require('./package.json').name
+ var packageVersion = require('./package.json').version
+ if (vueVersion && vueVersion !== packageVersion) {
+-  var vuePath = require.resolve('vue')
++  var vuePath = require.resolve('vue2')
+   var packagePath = require.resolve('./package.json')
+   throw new Error(
+     '\n\nVue packages version mismatch:\n\n' +
