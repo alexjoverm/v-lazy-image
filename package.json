@@ -11,5 +11,8 @@
     "v-lazy-image",
     "playground-vue2",
     "playground-vue3"
-  ]
+  ],
+  "devDependencies": {
+    "pnpm": "^6.12.1"
+  }
 }
