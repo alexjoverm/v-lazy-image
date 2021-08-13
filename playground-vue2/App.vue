@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import VLazyImage from "../lib/index";
+import VLazyImage from "../v-lazy-image/index";
 
 export default {
   name: "App",

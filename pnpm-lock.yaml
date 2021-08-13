@@ -14,12 +14,14 @@ importers:
       '@vue/compiler-sfc': ^3.0.5
       vite: ^2.4.4
       vite-plugin-vue2: ^1.8.0
+      vue: '2'
       vue-template-compiler: ^2.6.14
     devDependencies:
       '@vitejs/plugin-vue': 1.4.0_@vue+compiler-sfc@3.2.2
       '@vue/compiler-sfc': 3.2.2
       vite: 2.4.4
       vite-plugin-vue2: 1.8.0_c935919623298c814edf24b7d861d101
+      vue: 2.6.14
       vue-template-compiler: 2.6.14
 
   playground-vue3:
@@ -5648,6 +5650,10 @@ packages:
 
   /vue-template-es2015-compiler/1.9.1:
     resolution: {integrity: sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==}
+    dev: true
+
+  /vue/2.6.14:
+    resolution: {integrity: sha512-x2284lgYvjOMj3Za7kqzRcUSxBboHqtgRE2zlos1qWaOye5yUmHn42LB1250NJBLRwEcdrB0JRwyPTEPhfQjiQ==}
     dev: true
 
   /vue/3.2.2:
