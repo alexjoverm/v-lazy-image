@@ -9,4 +9,15 @@ export default defineConfig({
       name: "VLazyImage",
     },
   },
+  optimizeDeps: {
+    exclude: ["vue-demi"],
+  },
+  rollupOptions: {
+    external: ["vue-demi"],
+    output: {
+      globals: {
+        "vue-demi": "Vue",
+      },
+    },
+  },
 });

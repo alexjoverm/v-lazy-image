@@ -46,8 +46,11 @@ importers:
       babel-jest: ^26.6.3
       jest: ^26.6.3
       vite: ^2.4.4
-      vue: next
+      vue: ^3.0.0
+      vue-demi: ^0.11.2
       vue-jest: next
+    dependencies:
+      vue-demi: 0.11.2_vue@3.2.2
     devDependencies:
       '@babel/core': 7.15.0
       '@vitejs/plugin-vue': 1.4.0_@vue+compiler-sfc@3.2.2
@@ -5611,6 +5614,21 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
+
+  /vue-demi/0.11.2_vue@3.2.2:
+    resolution: {integrity: sha512-J+X8Au6BhQdcej6LY4O986634hZLu55L0ewU2j8my7WIKlu8cK0dqmdUxqVHHMd/cMrKKZ9SywB/id6aLhwCtA==}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.2.2
+    dev: false
 
   /vue-jest/5.0.0-alpha.10_822ac3273e9ccd122b62925e4eae839a:
     resolution: {integrity: sha512-iN62cTi4AL0UsgxEyVeJtHG6qXEv+8Ci2wX1vP3b/dAZvyBRmqy5aJHQrP6VCEuio+HgHQ1LAZ+ccM2pouBmlg==}

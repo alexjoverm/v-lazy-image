@@ -1,4 +1,6 @@
-const VLazyImageComponent = {
+import { reactive, h, computed, ref, onMounted, onBeforeUnmount, defineComponent } from "vue-demi";
+
+export default defineComponent({
   props: {
     src: {
       type: String,
@@ -21,73 +23,66 @@ const VLazyImageComponent = {
     },
   },
   inheritAttrs: false,
-  data: () => ({ observer: null, intersected: false, loaded: false }),
-  computed: {
-    srcImage() {
-      return this.intersected && this.src ? this.src : this.srcPlaceholder;
-    },
-    srcsetImage() {
-      return this.intersected && this.srcset ? this.srcset : false;
-    },
-  },
-  methods: {
-    load() {
-      if (this.$el.getAttribute("src") !== this.srcPlaceholder) {
-        this.loaded = true;
-        this.$emit("load");
+  setup(props, { attrs, slots, emit }) {
+    const root = ref(null);
+    const state = reactive({ observer: null, intersected: false, loaded: false });
+
+    // Computed
+    const srcImage = computed(() =>
+      state.intersected && props.src ? props.src : props.srcPlaceholder
+    );
+    const srcsetImage = computed(() => (state.intersected && props.srcset ? props.srcset : false));
+
+    // Methods
+    const load = () => {
+      if (root.value.getAttribute("src") !== props.srcPlaceholder) {
+        state.loaded = true;
+        emit("load");
       }
-    },
-    error() {
-      this.$emit("error", this.$el);
-    },
-  },
-  render(h) {
-    let img = h("img", {
-      attrs: {
-        src: this.srcImage,
-        srcset: this.srcsetImage,
-      },
-      domProps: this.$attrs,
-      class: {
-        "v-lazy-image": true,
-        "v-lazy-image-loaded": this.loaded,
-      },
-      on: { load: this.load, error: this.error },
+    };
+    const error = () => emit("error", root.value);
+
+    // Hooks
+    onMounted(() => {
+      if ("IntersectionObserver" in window) {
+        state.observer = new IntersectionObserver((entries) => {
+          const image = entries[0];
+          if (image.isIntersecting) {
+            state.intersected = true;
+            state.observer.disconnect();
+            emit("intersect");
+          }
+        }, props.intersectionOptions);
+
+        console.log(root.value);
+        state.observer.observe(root.value);
+      }
     });
-    if (this.usePicture) {
-      return h(
-        "picture",
-        { on: { load: this.load } },
-        this.intersected ? [this.$slots.default, img] : [img]
-      );
-    } else {
-      return img;
-    }
-  },
-  mounted() {
-    if ("IntersectionObserver" in window) {
-      this.observer = new IntersectionObserver((entries) => {
-        const image = entries[0];
-        if (image.isIntersecting) {
-          this.intersected = true;
-          this.observer.disconnect();
-          this.$emit("intersect");
-        }
-      }, this.intersectionOptions);
-      this.observer.observe(this.$el);
-    }
-  },
-  destroyed() {
-    if ("IntersectionObserver" in window) {
-      this.observer.disconnect();
-    }
-  },
-};
 
-export default VLazyImageComponent;
+    onBeforeUnmount(() => {
+      if ("IntersectionObserver" in window) {
+        state.observer.disconnect();
+      }
+    });
 
-// export const VLazyImagePlugin = {
-//   install: (app, opts) => {
-//     app.component("VLazyImage", VLazyImageComponent);
-//   },
-// };
+    return () => {
+      const img = h("img", {
+        ref: root,
+        src: srcImage.value,
+        srcset: srcsetImage.value || null, // set to null explicitly if falsy
+        ...attrs,
+        class: [{ "v-lazy-image": true }, { "v-lazy-image-loaded": state.loaded }],
+        onLoad: load,
+        onError: error,
+      });
+
+      return props.usePicture
+        ? h(
+            "picture",
+            { ref: root, on: { load } },
+            state.intersected ? [slots.default, img] : [img]
+          )
+        : img;
+    };
+  },
+});
