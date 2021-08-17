@@ -1,6 +1,6 @@
-import { reactive, h, computed, ref, onMounted, onBeforeUnmount, defineComponent } from "vue";
+import { reactive, h, computed, ref, onMounted, onBeforeUnmount } from "vue";
 
-export default defineComponent({
+export default {
   props: {
     src: {
       type: String,
@@ -54,7 +54,6 @@ export default defineComponent({
           }
         }, props.intersectionOptions);
 
-        console.log(root.value);
         state.observer.observe(root.value);
       }
     });
@@ -79,10 +78,10 @@ export default defineComponent({
       return props.usePicture
         ? h(
             "picture",
-            { ref: root, on: { load } },
+            { ref: root, onLoad: load },
             state.intersected ? [slots.default, img] : [img]
           )
         : img;
     };
   },
-});
+};

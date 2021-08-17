@@ -1,6 +1,6 @@
 {
   "name": "v-lazy-image",
-  "version": "0.0.0",
+  "version": "1.4.0",
   "scripts": {
     "build": "vite build && vite build -m v2",
     "demo": "vite",
@@ -19,7 +19,8 @@
     "vue-jest": "next"
   },
   "files": [
-    "dist"
+    "dist",
+    "v2"
   ],
   "main": "./dist/v-lazy-image.umd.js",
   "module": "./dist/v-lazy-image.es.js",
@@ -27,6 +28,10 @@
     ".": {
       "import": "./dist/v-lazy-image.es.js",
       "require": "./dist/v-lazy-image.umd.js"
+    },
+    "./v2": {
+      "import": "./v2/v-lazy-image.es.js",
+      "require": "./v2/v-lazy-image.umd.js"
     }
   },
   "jest": {
