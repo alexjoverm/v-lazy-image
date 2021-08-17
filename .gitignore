@@ -3,6 +3,7 @@ node_modules
 dist
 dist-ssr
 *.local
+!v-lazy-image/dist
 
 package-lock.json
 

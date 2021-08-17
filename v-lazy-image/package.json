@@ -2,7 +2,7 @@
   "name": "v-lazy-image",
   "version": "0.0.0",
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && vite build -m v2",
     "demo": "vite",
     "test": "jest"
   },
@@ -17,15 +17,6 @@
     "vite": "^2.4.4",
     "vue": "^3.0.0",
     "vue-jest": "next"
-  },
-  "peerDependencies": {
-    "@vue/composition-api": "^1.1.0",
-    "vue": "^2.0.0 || >=3.0.0"
-  },
-  "peerDependenciesMeta": {
-    "@vue/composition-api": {
-      "optional": true
-    }
   },
   "files": [
     "dist"
@@ -48,8 +39,5 @@
       "^.+\\.js$": "babel-jest",
       "^.+\\.vue$": "vue-jest"
     }
-  },
-  "dependencies": {
-    "vue-demi": "^0.11.2"
   }
 }

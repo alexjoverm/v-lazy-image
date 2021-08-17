@@ -1,4 +1,4 @@
-import { reactive, h, computed, ref, onMounted, onBeforeUnmount, defineComponent } from "vue-demi";
+import { reactive, h, computed, ref, onMounted, onBeforeUnmount, defineComponent } from "vue";
 
 export default defineComponent({
   props: {

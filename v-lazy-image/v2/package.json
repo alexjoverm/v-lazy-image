@@ -1,0 +1,11 @@
+{
+  "name": "v-lazy-image",
+  "main": "./v-lazy-image.umd.js",
+  "module": "./v-lazy-image.es.js",
+  "exports": {
+    ".": {
+      "import": "./v-lazy-image.es.js",
+      "require": "./v-lazy-image.umd.js"
+    }
+  }
+}
