@@ -1,31 +1,34 @@
 import { mount } from "@vue/test-utils";
-import Component from "../Hello";
+import Component from "../index";
 
-test("img renders correctly", () => {
-  const wrapper = mount(Component, {});
-  expect(wrapper.html()).toEqual("<h2>Hola aa</h2>");
+describe("v-lazy-image", () => {
+  beforeEach(() => {
+    window.IntersectionObserver = jest.fn(() => ({
+      observe: () => null,
+      unobserve: () => null,
+      disconnect: () => null,
+    }));
+  });
+
+  test("plain img can be created", () => {
+    const wrapper = mount(Component, {
+      propsData: {
+        src: "http://lorempixel.com/400/200/",
+      },
+    });
+
+    expect(wrapper.element).toMatchSnapshot();
+  });
+  test("using picture can be created", () => {
+    const wrapper = mount(Component, {
+      propsData: {
+        usePicture: true,
+      },
+    });
+
+    expect(wrapper.element).toMatchSnapshot();
+  });
 });
-
-// import { shallowMount } from "@vue/test-utils";
-// import Component from "../index";
-
-// test("img renders correctly", () => {
-//   let intersect;
-//   global.IntersectionObserver = function (cb) {
-//     intersect = cb;
-//     return {
-//       observe: () => {},
-//       disconnect: () => {},
-//     };
-//   };
-//   const wrapper = shallowMount(Component, {
-//     propsData: {
-//       src: "http://lorempixel.com/400/200/",
-//     },
-//   });
-//   intersect([{ isIntersecting: true }]);
-//   expect(wrapper.element).toMatchSnapshot();
-// });
 
 // test("picture renders correctly", () => {
 //   let intersect;

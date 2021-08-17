@@ -1,5 +1,0 @@
-{
-  "name": "v-lazy-image",
-  "main": "./v-lazy-image.umd.js",
-  "module": "./v-lazy-image.es.js"
-}

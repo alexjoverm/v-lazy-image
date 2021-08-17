@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`v-lazy-image plain img can be created 1`] = `
+<img
+  class="v-lazy-image"
+  src="data:,"
+/>
+`;
+
+exports[`v-lazy-image using picture can be created 1`] = `
+<picture>
+  <img
+    class="v-lazy-image"
+    src="data:,"
+  />
+</picture>
+`;
