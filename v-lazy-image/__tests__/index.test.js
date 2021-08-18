@@ -22,6 +22,7 @@ describe("v-lazy-image", () => {
   test("using picture can be created", () => {
     const wrapper = mount(Component, {
       propsData: {
+        src: "http://lorempixel.com/400/200/",
         usePicture: true,
       },
     });
