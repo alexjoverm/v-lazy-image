@@ -70,7 +70,7 @@ export default {
         src: srcImage.value,
         srcset: srcsetImage.value || null, // set to null explicitly if falsy
         ...attrs,
-        class: [attrs.class, { "v-lazy-image": true }, { "v-lazy-image-loaded": state.loaded }],
+        class: [attrs.class, "v-lazy-image", { "v-lazy-image-loaded": state.loaded }],
         onLoad: load,
         onError: error,
       });
