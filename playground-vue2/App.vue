@@ -1,9 +1,12 @@
 <template>
-  <div id="app">
+  <div>
     <div class="space"></div>
     <h2>Simple Demo</h2>
     <div class="photo-wrap">
-      <v-lazy-image src="https://source.unsplash.com/cTXwZgyGzxg/5000x2000"></v-lazy-image>
+      <v-lazy-image
+        class="simple-demo"
+        src="https://source.unsplash.com/cTXwZgyGzxg/5000x2000"
+      ></v-lazy-image>
     </div>
 
     <div class="space"></div>
@@ -11,6 +14,7 @@
     <h4>(with picture and sizes )</h4>
     <div class="photo-wrap">
       <v-lazy-image
+        class="picture-demo"
         srcset="
         https://cdn-images-1.medium.com/max/400/1*xjGrvQSXvj72W4zD6IWzfg.jpeg 400w,
         https://cdn-images-1.medium.com/max/800/1*xjGrvQSXvj72W4zD6IWzfg.jpeg 800w
@@ -25,6 +29,7 @@
     <h4>(only srcset )</h4>
     <div class="photo-wrap">
       <v-lazy-image
+        class="srcset-demo"
         srcset="
         https://cdn-images-1.medium.com/max/800/1*xjGrvQSXvj72W4zD6IWzfg.jpeg,
         https://cdn-images-1.medium.com/max/1200/1*xjGrvQSXvj72W4zD6IWzfg.jpeg 1.5x,
@@ -35,11 +40,14 @@
     </div>
 
     <div class="space"></div>
+    <div class="space"></div>
     <h2>Progressive Rendering - Blur effect</h2>
     <div class="photo-wrap">
       <v-lazy-image
+        class="progressive-demo"
         src="https://source.unsplash.com/WLUHO9A_xik/5000x2000"
         src-placeholder="https://source.unsplash.com/WLUHO9A_xik/50x20"
+        :intersection-options="{ rootMargin: '0px' }"
       ></v-lazy-image>
     </div>
 

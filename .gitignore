@@ -9,6 +9,9 @@ package-lock.json
 
 yarn.lock
 
+*/cypress/screenshots
+*/cypress/videos
+
 # Yarn
 # .yarn/*
 # !.yarn/cache

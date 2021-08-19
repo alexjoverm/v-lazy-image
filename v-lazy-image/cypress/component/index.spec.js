@@ -1,5 +1,6 @@
 import { mount } from "@cypress/vue";
 import Demo from "../../../playground-vue3/App.vue";
+import Demo2 from "../../../playground-vue2/App.vue";
 
 describe("Demo vue 3", () => {
   before(() => {
