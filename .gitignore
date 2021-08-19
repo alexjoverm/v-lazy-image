@@ -11,6 +11,8 @@ yarn.lock
 
 */cypress/screenshots
 */cypress/videos
+v-lazy-image/dist
+v-lazy-image/v2
 
 # Yarn
 # .yarn/*
