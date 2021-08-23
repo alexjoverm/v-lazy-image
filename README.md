@@ -4,18 +4,9 @@
 [![npm](https://img.shields.io/npm/dm/v-lazy-image.svg)](https://www.npmjs.com/package/v-lazy-image)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg)](https://paypal.me/AJoverMorales)
 
-
-
 A Vue.js component to lazy load an image automatically when it enters the viewport using the [Intersection Observer API](https://developer.mozilla.org/docs/Web/API/Intersection_Observer_API).
 
-> Do you know **[VueDose](https://vuedose.tips)**? It's where you can learn tips about the Vue.js ecosystem in a concise format, perfect for busy devs! 🦄
-
-### Demos
-
-* [Simple demo](https://codesandbox.io/s/r5wmj970wm)
-* [Responsive images](https://codesandbox.io/s/k2kp64qkq7), by [@aarongarciah](https://twitter.com/aarongarciah)
-* [Progressive image loading with animations](https://codesandbox.io/s/9l3n6j5944), by [@aarongarciah](https://twitter.com/aarongarciah)
-* [Performant progressive blur using SVG](https://codesandbox.io/s/2ox0z4ymop)
+> ⚠️ Check the **[practical examples and demos](https://vuedose.tips/lazy-loading-images-with-v-lazy-image)** if you are creating a real-world or enterprise project and see how to **achieve max performance** using responsive images and progressive image rendering.
 
 ## Usage
 
@@ -25,16 +16,15 @@ npm install v-lazy-image
 
 _**Warning:** You'll need to install the [w3c Intersection Observer polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill) in case you're targeting a browser which doesn't support it._
 
-You can register the component globally so it's available in all your apps:
+For **Vue 3**, import it and use it like any other component:
 
-```js
-import Vue from "vue";
-import { VLazyImagePlugin } from "v-lazy-image";
-
-Vue.use(VLazyImagePlugin);
+```html
+<script setup>
+import VLazyImage from "v-lazy-image";
+</script>
 ```
 
-Or use it locally in any of your components:
+For **Vue 2**, import it from `v-lazy-image/v2`:
 
 ```js
 import VLazyImage from "v-lazy-image";
@@ -54,107 +44,25 @@ You must pass an `src` property with the link of the image:
 </template>
 ```
 
-That image will be loaded as soon as the image enters the viewport.
+That easy, the image will be loaded as soon as it enters the viewport. **[See it running in this demo](https://vuedose.tips/lazy-loading-images-with-v-lazy-image)** and play with it.
 
-## Progressive Loading
+## Achieving Max Performance
 
-You can use the `src-placeholder` property to define an image that is shown until the `src` image is loaded.
+Just by using `v-lazy-image` you'll have a performance gain, since the image will be loaded when it's going to be seen.
 
-When the `src` image is loaded, a `v-lazy-image-loaded` class is added, so you can use it to perform animations. For example, a blur effect:
+But you can go to the next level and squeeze your web's performance if you use the next techniques.
 
-```html
-<template>
-  <v-lazy-image
-    src="https://cdn-images-1.medium.com/max/1600/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
-    src-placeholder="https://cdn-images-1.medium.com/max/80/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
-  />
-</template>
+### Responsive Images
 
-<style scoped>
-.v-lazy-image {
-  filter: blur(10px);
-  transition: filter 0.7s;
-}
-.v-lazy-image-loaded {
-  filter: blur(0);
-}
-</style>
-```
+`v-lazy-image` allows you to use Web Standard's: the `srcset` attribute on images and the `<picture>` tag.
 
-In case you are using Webpack bundler for images too (just like Vue-cli):
-```html
-<v-lazy-image
-  src="https://cdn-images-1.medium.com/max/1600/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
-  :src-placeholder="require('../assets/img.jpg')"
-/>
-```
+["Use Responsive Images with v-lazy-image"](https://vuedose.tips/use-responsive-images-with-v-lazy-image) shows you how simple it is and see it in action in a demo.
 
-You could listen to the `intersect` and `load` events for more complex animations and state handling:
+### Progressive Image Loading
 
-```html
-<template>
-  <v-lazy-image
-    src="https://cdn-images-1.medium.com/max/1600/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
-    src-placeholder="https://cdn-images-1.medium.com/max/80/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
-    @intersect="..."
-    @load="..."
-  />
-</template>
-```
+A technique used by platforms like Spotify, Netflix or Medium to improve Perceived Performance, thus the User Experience.
 
-[@jmperezperez](https://twitter.com/jmperezperez) has written about the [progressive loading technique](https://jmperezperez.com/more-progressive-image-loading/) on his blog, in case you want a deeper explanation.
-
-## Responsive Images
-
-Using the `srcset` property you can set images for different resolutions:
-
-```html
-<template>
-  <v-lazy-image
-    srcset="image.jpg 1x, image_2x.jpg 2x"
-  />
-</template>
-```
-
-When using the `srcset` attribute is recommended to use also `src` as a fallback for browsers that don't support the `srcset` and `sizes` attributes:
-
-```html
-<template>
-  <v-lazy-image
-    srcset="image-320w.jpg 320w, image-480w.jpg 480w"
-    sizes="(max-width: 320px) 280px, 440px"
-    src="image-480w.jpg"
-  />
-</template>
-```
-
-The `srcset` prop is combinable with `src-placeholder` in order to apply progressive loading.
-
-## Picture
-
-If you want to wrap the `img` in a `picture` tag, use the prop `usePicture`. You can then use slots to add additional elements above the `img` element`.
-
-```html
-<v-lazy-image
-  srcset="image-320w.jpg 320w, image-480w.jpg 480w"
-  alt="Fallback"
-  use-picture
->
-  <source srcset="image-320w.jpg 320w, image-480w.jpg 480w" />
-</v-lazy-image>
-
-```
-
-Renders as:
-
-```html
-<picture>
-  <source srcset="image-320w.jpg 320w, image-480w.jpg 480w" />
-  <img srcset="image-320w.jpg 320w, image-480w.jpg 480w" alt="Fallback" />
-</picture>
-```
-
-Note you can use the [picture polyfill](https://github.com/scottjehl/picturefill).
+In ["Achieve Max Performance loading your images with v-lazy-image"](https://vuedose.tips/achieve-max-performance-loading-your-images-with-v-lazy-image) you'll see what's progressive image loading about, how to apply it in `v-lazy-image` using the `src-placeholder` attribute and a demo to see how it plays with a CSS animation.
 
 ## API
 
@@ -179,3 +87,13 @@ _Fields marked as (\*) are required._
 | `intersect` | Triggered when the image intersects the viewport         |
 | `load`      | Triggered when the lazy image defined in `src` is loaded |
 | `error`     | Triggered when the lazy image defined in `src` fails to load |
+
+
+<!-- 
+* [Simple demo](https://codesandbox.io/s/r5wmj970wm)
+* [Responsive images](https://codesandbox.io/s/k2kp64qkq7), by [@aarongarciah](https://twitter.com/aarongarciah)
+* [Progressive image loading with animations](https://codesandbox.io/s/9l3n6j5944), by [@aarongarciah](https://twitter.com/aarongarciah)
+* [Performant progressive blur using SVG](https://codesandbox.io/s/2ox0z4ymop)
+
+## Progressive Loading
+

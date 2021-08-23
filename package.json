@@ -1,12 +1,7 @@
 {
   "name": "v-lazy-image-ws",
   "version": "0.0.0",
-  "scripts": {
-    "test:unit": "yarn workspace v-lazy-image test",
-    "build": "yarn workspace v-lazy-image build",
-    "demo2": "yarn workspace playground-vue2 demo",
-    "demo3": "yarn workspace playground-vue3 demo"
-  },
+  "scripts": {},
   "workspaces": [
     "v-lazy-image",
     "playground-vue2",
