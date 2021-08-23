@@ -6,7 +6,7 @@
 
 A Vue.js component to lazy load an image automatically when it enters the viewport using the [Intersection Observer API](https://developer.mozilla.org/docs/Web/API/Intersection_Observer_API).
 
-> ⚠️ Check the **[practical examples and demos](https://vuedose.tips/lazy-loading-images-with-v-lazy-image)** if you are creating a real-world or enterprise project and see how to **achieve max performance** using responsive images and progressive image rendering.
+> ⚠️ Check the **[practical examples and demos](https://vuedose.tips/lazy-loading-images-with-v-lazy-image)** if you are creating a real-world or enterprise project and see how to **achieve max performance** using responsive images and progressive image loading.
 
 ## Usage
 
@@ -27,7 +27,7 @@ import VLazyImage from "v-lazy-image";
 For **Vue 2**, import it from `v-lazy-image/v2`:
 
 ```js
-import VLazyImage from "v-lazy-image";
+import VLazyImage from "v-lazy-image/v2";
 
 export default {
   components: {
@@ -44,7 +44,7 @@ You must pass an `src` property with the link of the image:
 </template>
 ```
 
-That easy, the image will be loaded as soon as it enters the viewport. **[See it running in this demo](https://vuedose.tips/lazy-loading-images-with-v-lazy-image)** and play with it.
+That easy, the image will be loaded as soon as it enters the viewport. **[See it running in this demo](https://vuedose.tips/lazy-loading-images-with-v-lazy-image)** and you'll learn how to use Chrome DevTools to check how it's loaded.
 
 ## Achieving Max Performance
 
