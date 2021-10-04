@@ -28,6 +28,7 @@ For **Vue 2**, import it from `v-lazy-image/v2`:
 
 ```js
 import VLazyImage from "v-lazy-image/v2";
+// in case of problems, replace with this: import VLazyImage from 'v-lazy-image/v2/v-lazy-image.es.js'
 
 export default {
   components: {
