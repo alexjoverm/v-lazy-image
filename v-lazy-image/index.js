@@ -35,7 +35,7 @@ export default {
 
     // Methods
     const load = () => {
-      if (root.value.getAttribute("src") !== props.srcPlaceholder) {
+      if (root.value?.getAttribute("src") !== props.srcPlaceholder) {
         state.loaded = true;
         emit("load");
       }

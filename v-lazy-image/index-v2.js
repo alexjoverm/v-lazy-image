@@ -32,7 +32,7 @@ const VLazyImageComponent = {
   },
   methods: {
     load() {
-      if (this.$el.getAttribute("src") !== this.srcPlaceholder) {
+      if (this.$el?.getAttribute("src") !== this.srcPlaceholder) {
         this.loaded = true;
         this.$emit("load");
       }
