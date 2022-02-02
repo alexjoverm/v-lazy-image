@@ -8,7 +8,7 @@ export default {
     },
     srcPlaceholder: {
       type: String,
-      default: "data:,",
+      default: "data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=",
     },
     srcset: {
       type: String,
@@ -35,7 +35,7 @@ export default {
 
     // Methods
     const load = () => {
-      if (root.value.getAttribute("src") !== props.srcPlaceholder) {
+      if (root.value && root.value.getAttribute("src") !== props.srcPlaceholder) {
         state.loaded = true;
         emit("load");
       }
@@ -59,7 +59,7 @@ export default {
     });
 
     onBeforeUnmount(() => {
-      if ("IntersectionObserver" in window) {
+      if ("IntersectionObserver" in window && state.observer) {
         state.observer.disconnect();
       }
     });
