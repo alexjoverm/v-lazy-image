@@ -20,7 +20,7 @@ For **Vue 3**, import it and use it like any other component:
 
 ```html
 <script setup>
-import VLazyImage from "v-lazy-image";
+  import VLazyImage from "v-lazy-image";
 </script>
 ```
 
@@ -28,7 +28,6 @@ For **Vue 2**, import it from `v-lazy-image/v2`:
 
 ```js
 import VLazyImage from "v-lazy-image/v2";
-// in case of problems, replace with this: import VLazyImage from 'v-lazy-image/v2/v-lazy-image.es.js'
 
 export default {
   components: {
@@ -67,28 +66,27 @@ In ["Achieve Max Performance loading your images with v-lazy-image"](https://vue
 
 ## API
 
-Aside from the following API, you can pass any *img* attribute, such as `alt`, and they'll be added to the rendered `<img>` tag.
+Aside from the following API, you can pass any _img_ attribute, such as `alt`, and they'll be added to the rendered `<img>` tag.
 
 _Fields marked as (\*) are required._
 
 ### Props
 
-| Name                   | Type          | Default       | Description                                                                                                                                               |
-| ---------------------- | ------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `src`                  | String _(\*)_ |       -       | Image `src` to lazy load when it intersects with the viewport                                                                                             |
-| `src-placeholder`      | String        | ' '           | If defined, it will be shown until the `src` image is loaded. <br> Useful for progressive image loading, [see demo](https://codesandbox.io/s/9l3n6j5944)  |
-| `srcset`               | String        |       -       | Images to be used for different resolutions                                                                                                               |
-| `intersection-options` | Object        | () => ({})    | The [Intersection Observer options object](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Creating_an_intersection_observer). |
-| `use-picture`          | Boolean       | false         | Wrap the img in a picture tag. |
+| Name                   | Type          | Default    | Description                                                                                                                                               |
+| ---------------------- | ------------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `src`                  | String _(\*)_ | -          | Image `src` to lazy load when it intersects with the viewport                                                                                             |
+| `src-placeholder`      | String        | ' '        | If defined, it will be shown until the `src` image is loaded. <br> Useful for progressive image loading, [see demo](https://codesandbox.io/s/9l3n6j5944)  |
+| `srcset`               | String        | -          | Images to be used for different resolutions                                                                                                               |
+| `intersection-options` | Object        | () => ({}) | The [Intersection Observer options object](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Creating_an_intersection_observer). |
+| `use-picture`          | Boolean       | false      | Wrap the img in a picture tag.                                                                                                                            |
 
 ### Events
 
-| Name        | Description                                              |
-| ----------- | -------------------------------------------------------- |
-| `intersect` | Triggered when the image intersects the viewport         |
-| `load`      | Triggered when the lazy image defined in `src` is loaded |
+| Name        | Description                                                  |
+| ----------- | ------------------------------------------------------------ |
+| `intersect` | Triggered when the image intersects the viewport             |
+| `load`      | Triggered when the lazy image defined in `src` is loaded     |
 | `error`     | Triggered when the lazy image defined in `src` fails to load |
-
 
 <!-- 
 * [Simple demo](https://codesandbox.io/s/r5wmj970wm)
@@ -97,4 +95,3 @@ _Fields marked as (\*) are required._
 * [Performant progressive blur using SVG](https://codesandbox.io/s/2ox0z4ymop)
 
 ## Progressive Loading
-
