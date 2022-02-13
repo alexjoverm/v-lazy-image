@@ -2,7 +2,7 @@ import { mount } from "@cypress/vue";
 import Demo from "../../../playground-vue3/App.vue";
 
 describe("Demo vue 3", () => {
-  before(() => {
+  beforeEach(() => {
     mount(Demo, {});
   });
 
@@ -16,18 +16,27 @@ describe("Demo vue 3", () => {
     // First should't be loaded, thus don't have a src
     cy.get(".picture-demo")
       .should("have.attr", "src")
-      .and("not.equals", "https://cdn-images-1.medium.com/max/800/1*xjGrvQSXvj72W4zD6IWzfg.jpeg");
+      .and(
+        "not.equals",
+        "https://cdn-images-1.medium.com/max/800/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
+      );
 
     // When scrolling should load
     cy.get(".picture-demo")
       .scrollIntoView()
       .should("have.attr", "src")
-      .and("equals", "https://cdn-images-1.medium.com/max/800/1*xjGrvQSXvj72W4zD6IWzfg.jpeg");
+      .and(
+        "equals",
+        "https://cdn-images-1.medium.com/max/800/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
+      );
 
     // Same for srcset
     cy.get(".srcset-demo")
       .should("have.attr", "src")
-      .and("equals", "https://cdn-images-1.medium.com/max/800/1*xjGrvQSXvj72W4zD6IWzfg.jpeg");
+      .and(
+        "equals",
+        "https://cdn-images-1.medium.com/max/800/1*xjGrvQSXvj72W4zD6IWzfg.jpeg"
+      );
   });
 
   it("Loads progressively an image when using src-placeholder", () => {
