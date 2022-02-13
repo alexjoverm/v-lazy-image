@@ -4,40 +4,50 @@ export default {
   props: {
     src: {
       type: String,
-      required: true,
+      required: true
     },
     srcPlaceholder: {
       type: String,
-      default: "data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=",
+      default:
+        "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
     },
     srcset: {
-      type: String,
+      type: String
     },
     intersectionOptions: {
       type: Object,
-      default: () => ({}),
+      default: () => ({})
     },
     usePicture: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   inheritAttrs: false,
   setup(props, { attrs, slots, emit }) {
     const root = ref(null);
-    const state = reactive({ observer: null, intersected: false, loaded: false });
+    const state = reactive({
+      observer: null,
+      intersected: false,
+      loaded: false
+    });
 
     // Computed
     const srcImage = computed(() =>
       state.intersected && props.src ? props.src : props.srcPlaceholder
     );
-    const srcsetImage = computed(() => (state.intersected && props.srcset ? props.srcset : false));
+    const srcsetImage = computed(() =>
+      state.intersected && props.srcset ? props.srcset : false
+    );
 
     // Methods
     const load = () => {
-      if (root.value && root.value.getAttribute("src") !== props.srcPlaceholder) {
+      if (
+        root.value &&
+        root.value.getAttribute("src") !== props.srcPlaceholder
+      ) {
         state.loaded = true;
-        emit("load");
+        emit("load", this.$el);
       }
     };
     const error = () => emit("error", root.value);
@@ -70,9 +80,13 @@ export default {
         src: srcImage.value,
         srcset: srcsetImage.value || null, // set to null explicitly if falsy
         ...attrs,
-        class: [attrs.class, "v-lazy-image", { "v-lazy-image-loaded": state.loaded }],
+        class: [
+          attrs.class,
+          "v-lazy-image",
+          { "v-lazy-image-loaded": state.loaded }
+        ],
         onLoad: load,
-        onError: error,
+        onError: error
       });
 
       return props.usePicture
@@ -83,5 +97,5 @@ export default {
           )
         : img;
     };
-  },
+  }
 };

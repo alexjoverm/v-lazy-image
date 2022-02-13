@@ -28,16 +28,12 @@
     "dist",
     "v2"
   ],
-  "main": "./dist/v-lazy-image.umd.js",
-  "module": "./dist/v-lazy-image.es.js",
+  "main": "./dist/v-lazy-image.js",
+  "module": "./dist/v-lazy-image.mjs",
   "exports": {
     ".": {
-      "import": "./dist/v-lazy-image.es.js",
-      "require": "./dist/v-lazy-image.umd.js"
-    },
-    "./v2": {
-      "import": "./v2/v-lazy-image.es.js",
-      "require": "./v2/v-lazy-image.umd.js"
+      "import": "./dist/v-lazy-image.mjs",
+      "require": "./dist/v-lazy-image.js"
     }
   },
   "jest": {

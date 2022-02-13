@@ -2,23 +2,24 @@ const VLazyImageComponent = {
   props: {
     src: {
       type: String,
-      required: true,
+      required: true
     },
     srcPlaceholder: {
       type: String,
-      default: "data:,",
+      default:
+        "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
     },
     srcset: {
-      type: String,
+      type: String
     },
     intersectionOptions: {
       type: Object,
-      default: () => ({}),
+      default: () => ({})
     },
     usePicture: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   inheritAttrs: false,
   data: () => ({ observer: null, intersected: false, loaded: false }),
@@ -28,31 +29,31 @@ const VLazyImageComponent = {
     },
     srcsetImage() {
       return this.intersected && this.srcset ? this.srcset : false;
-    },
+    }
   },
   methods: {
     load() {
-      if (this.$el.getAttribute("src") !== this.srcPlaceholder) {
+      if (this.$el && this.$el.getAttribute("src") !== this.srcPlaceholder) {
         this.loaded = true;
-        this.$emit("load");
+        this.$emit("load", this.$el);
       }
     },
     error() {
       this.$emit("error", this.$el);
-    },
+    }
   },
   render(h) {
     let img = h("img", {
       attrs: {
         src: this.srcImage,
-        srcset: this.srcsetImage,
+        srcset: this.srcsetImage
       },
       domProps: this.$attrs,
       class: {
         "v-lazy-image": true,
-        "v-lazy-image-loaded": this.loaded,
+        "v-lazy-image-loaded": this.loaded
       },
-      on: { load: this.load, error: this.error },
+      on: { load: this.load, error: this.error }
     });
     if (this.usePicture) {
       return h(
@@ -81,7 +82,7 @@ const VLazyImageComponent = {
     if ("IntersectionObserver" in window) {
       this.observer.disconnect();
     }
-  },
+  }
 };
 
 export default VLazyImageComponent;
