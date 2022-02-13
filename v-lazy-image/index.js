@@ -47,7 +47,7 @@ export default {
         root.value.getAttribute("src") !== props.srcPlaceholder
       ) {
         state.loaded = true;
-        emit("load", this.$el);
+        emit("load", root.value);
       }
     };
     const error = () => emit("error", root.value);
