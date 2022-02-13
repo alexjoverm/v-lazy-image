@@ -46,5 +46,8 @@
       "^.+\\.js$": "babel-jest",
       "^.+\\.vue$": "vue-jest"
     }
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
