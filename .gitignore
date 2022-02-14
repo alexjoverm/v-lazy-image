@@ -1,3 +1,24 @@
 node_modules
-.idea
+.DS_Store
 dist
+dist-ssr
+*.local
+!v-lazy-image/dist
+
+package-lock.json
+
+yarn.lock
+
+*/cypress/screenshots
+*/cypress/videos
+v-lazy-image/dist
+v-lazy-image/v2
+v-lazy-image/README.md
+
+# Yarn
+# .yarn/*
+# !.yarn/cache
+# !.yarn/releases
+# !.yarn/plugins
+# !.yarn/sdks
+# !.yarn/versions

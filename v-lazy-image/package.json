@@ -1,0 +1,53 @@
+{
+  "name": "v-lazy-image",
+  "version": "2.1.1",
+  "scripts": {
+    "build": "vite build && vite build -m v2",
+    "demo": "vite",
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "jest __tests__",
+    "test:e2e": "cypress run-ct",
+    "prepublishOnly": "npm run build && cp ../README.md ./"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@cypress/vite-dev-server": "^2.2.2",
+    "@cypress/vue": "^3.1.1",
+    "@vitejs/plugin-vue": "^2.2.0",
+    "@vue/babel-preset-app": "^4.5.13",
+    "@vue/compiler-sfc": "^3.2.1",
+    "@vue/test-utils": "next",
+    "babel-jest": "^26.6.3",
+    "cypress": "^9.4.1",
+    "jest": "^26.6.3",
+    "vite": "^2.8.1",
+    "vue": "^3.2.31",
+    "vue-jest": "next"
+  },
+  "files": [
+    "dist",
+    "v2"
+  ],
+  "main": "./dist/v-lazy-image.js",
+  "module": "./dist/v-lazy-image.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/v-lazy-image.mjs",
+      "require": "./dist/v-lazy-image.js"
+    }
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.vue$": "vue-jest"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

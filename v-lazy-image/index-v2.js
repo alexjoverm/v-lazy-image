@@ -6,7 +6,8 @@ const VLazyImageComponent = {
     },
     srcPlaceholder: {
       type: String,
-      default: "data:,"
+      default:
+        "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
     },
     srcset: {
       type: String
@@ -32,13 +33,13 @@ const VLazyImageComponent = {
   },
   methods: {
     load() {
-      if (this.$el.getAttribute("src") !== this.srcPlaceholder) {
+      if (this.$el && this.$el.getAttribute("src") !== this.srcPlaceholder) {
         this.loaded = true;
-        this.$emit("load");
+        this.$emit("load", this.$el);
       }
     },
     error() {
-      this.$emit("error", this.$el)
+      this.$emit("error", this.$el);
     }
   },
   render(h) {
@@ -66,7 +67,7 @@ const VLazyImageComponent = {
   },
   mounted() {
     if ("IntersectionObserver" in window) {
-      this.observer = new IntersectionObserver(entries => {
+      this.observer = new IntersectionObserver((entries) => {
         // Use `intersectionRatio` because of Edge 15's
         // lack of support for `isIntersecting`.
         // See: https://github.com/w3c/IntersectionObserver/issues/211
@@ -88,8 +89,8 @@ const VLazyImageComponent = {
 
 export default VLazyImageComponent;
 
-export const VLazyImagePlugin = {
-  install: (Vue, opts) => {
-    Vue.component("VLazyImage", VLazyImageComponent);
-  }
-};
+// export const VLazyImagePlugin = {
+//   install: (app, opts) => {
+//     app.component("VLazyImage", VLazyImageComponent);
+//   },
+// };

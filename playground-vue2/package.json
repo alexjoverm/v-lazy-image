@@ -1,0 +1,17 @@
+{
+  "name": "playground-vue2",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "vite build",
+    "demo": "vite"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.3.0",
+    "@vue/compiler-sfc": "^3.0.5",
+    "vite": "^2.4.4",
+    "vite-plugin-vue2": "^1.8.0",
+    "vue": "^2.6.14",
+    "vue-template-compiler": "^2.6.14",
+    "v-lazy-image": "workspace:*"
+  }
+}
