@@ -56,8 +56,10 @@ export default {
     onMounted(() => {
       if ("IntersectionObserver" in window) {
         state.observer = new IntersectionObserver((entries) => {
-          const image = entries[0];
-          if (image.isIntersecting) {
+          // Use `intersectionRatio` because of Edge 15's
+          // lack of support for `isIntersecting`.
+          // See: https://github.com/w3c/IntersectionObserver/issues/211
+          if (entries.some(e => e.isIntersecting || e.intersectionRatio > 0)) {
             state.intersected = true;
             state.observer.disconnect();
             emit("intersect");
@@ -69,7 +71,7 @@ export default {
     });
 
     onBeforeUnmount(() => {
-      if ("IntersectionObserver" in window && state.observer) {
+      if (state.observer) {
         state.observer.disconnect();
       }
     });
