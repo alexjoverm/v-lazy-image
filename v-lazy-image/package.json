@@ -34,6 +34,10 @@
     ".": {
       "import": "./dist/v-lazy-image.mjs",
       "require": "./dist/v-lazy-image.js"
+    },
+    "./v2": {
+      "import": "./v2/v-lazy-image.mjs",
+      "require": "./v2/v-lazy-image.js"
     }
   },
   "jest": {
