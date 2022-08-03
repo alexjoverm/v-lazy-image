@@ -26,8 +26,10 @@
     "vue-jest": "next"
   },
   "files": [
-    "dist",
-    "v2"
+    "dist/v-lazy-image.js",
+    "dist/v-lazy-image.mjs",
+    "v2/v-lazy-image.js",
+    "v2/v-lazy-image.mjs"
   ],
   "main": "./dist/v-lazy-image.js",
   "module": "./dist/v-lazy-image.mjs",
