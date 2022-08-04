@@ -4,24 +4,24 @@ export default {
   props: {
     src: {
       type: String,
-      required: true
+      required: true,
     },
     srcPlaceholder: {
       type: String,
       default:
-        "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+        "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
     },
     srcset: {
-      type: String
+      type: String,
     },
     intersectionOptions: {
       type: Object,
-      default: () => ({})
+      default: () => ({}),
     },
     usePicture: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   inheritAttrs: false,
   setup(props, { attrs, slots, emit }) {
@@ -29,7 +29,7 @@ export default {
     const state = reactive({
       observer: null,
       intersected: false,
-      loaded: false
+      loaded: false,
     });
 
     // Computed
@@ -83,19 +83,19 @@ export default {
         class: [
           attrs.class,
           "v-lazy-image",
-          { "v-lazy-image-loaded": state.loaded }
+          { "v-lazy-image-loaded": state.loaded },
         ],
         onLoad: load,
-        onError: error
+        onError: error,
       });
 
       return props.usePicture
         ? h(
             "picture",
             { ref: root, onLoad: load },
-            state.intersected ? [slots.default, img] : [img]
+            state.intersected ? [slots.default(), img] : [img]
           )
         : img;
     };
-  }
+  },
 };

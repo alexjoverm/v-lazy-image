@@ -7,7 +7,8 @@
     "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "jest __tests__",
     "test:e2e": "cypress run-ct",
-    "prepublishOnly": "npm run build && cp ../README.md ./"
+    "prepublishOnly": "npm run build && cp ../README.md ./",
+    "prepare": "npm run build"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
@@ -25,8 +26,10 @@
     "vue-jest": "next"
   },
   "files": [
-    "dist",
-    "v2"
+    "dist/v-lazy-image.js",
+    "dist/v-lazy-image.mjs",
+    "v2/v-lazy-image.js",
+    "v2/v-lazy-image.mjs"
   ],
   "main": "./dist/v-lazy-image.js",
   "module": "./dist/v-lazy-image.mjs",
