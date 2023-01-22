@@ -24,6 +24,7 @@ export default {
     }
   },
   inheritAttrs: false,
+  emits: ["load", "error", "intersect"],
   setup(props, { attrs, slots, emit }) {
     const root = ref(null);
     const state = reactive({
