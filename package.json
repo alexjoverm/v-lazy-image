@@ -8,6 +8,6 @@
     "playground-vue3"
   ],
   "devDependencies": {
-    "pnpm": "^6.12.1"
+    "pnpm": "^7.33.4"
   }
 }
