@@ -69,7 +69,7 @@ export default {
     });
 
     onBeforeUnmount(() => {
-      if ("IntersectionObserver" in window && state.observer) {
+      if (state.observer) {
         state.observer.disconnect();
       }
     });
