@@ -56,8 +56,7 @@ export default {
     onMounted(() => {
       if ("IntersectionObserver" in window) {
         state.observer = new IntersectionObserver((entries) => {
-          const image = entries[0];
-          if (image.isIntersecting) {
+          if (entries.some((entry) => entry.isIntersecting)) {
             state.intersected = true;
             state.observer.disconnect();
             emit("intersect");
