@@ -7,7 +7,7 @@
     "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "jest __tests__",
     "test:e2e": "cypress run-ct",
-    "prepublishOnly": "npm run build && cp ../README.md ./"
+    "prepublishOnly": "npm run build && cp ../README.md ./ && cp ../LICENSE ./"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
