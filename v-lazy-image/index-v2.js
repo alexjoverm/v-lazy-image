@@ -1,3 +1,14 @@
+try {
+  const vue = require("vue");
+
+  if (vue && typeof vue.createApp === "function") {
+    throw new Error(
+      "You are using the Vue 2 build of v-lazy-image in a Vue 3 application. " +
+      "Please use the default v-lazy-image package when working with Vue 3."
+    );
+  }
+} catch (_) {}
+
 const VLazyImageComponent = {
   props: {
     src: {
